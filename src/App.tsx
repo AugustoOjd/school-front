@@ -1,9 +1,9 @@
 import React from 'react';
 import Navbar from './components/layout/navbar/Navbar';
 import './css/App.css'
-import Rank from './components/rank/Rank';
-import Intro from './components/intro/Intro';
-import Form from './components/form/Form';
+import Rank from './components/rank/BaseRank';
+import Intro from './components/intro/BaseIntro';
+import Form from './components/form/BaseForm';
 import Footer from './components/layout/footer/Footer';
 
 function App() {
