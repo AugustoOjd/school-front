@@ -1,51 +1,32 @@
-// import { useForm, SubmitHandler } from "react-hook-form";
-
-
-// enum GenderEnum {
-//   female = "female",
-//   male = "male",
-//   other = "other"
-// }
-
-// interface IFormInput {
-//   firstName: String;
-//   gender: GenderEnum;
-// }
-
-// export default function App() {
-//   const { register, handleSubmit } = useForm<IFormInput>();
-//   const onSubmit: SubmitHandler<IFormInput> = data => console.log(data);
-
-//   return (
-//     <form onSubmit={handleSubmit(onSubmit)}>
-//       <label>First Name</label>
-//       <input {...register("firstName")} />
-//       <label>Gender Selection</label>
-//       <select {...register("gender")} >
-//         <option value="female">female</option>
-//         <option value="male">male</option>
-//         <option value="other">other</option>
-//       </select>
-//       <input type="submit" />
-//     </form>
-//   );
-// }
-
-
 import React, {useState} from 'react'
 import { Box, InputLabel, MenuItem, Select, Stack, TextField, SelectChangeEvent, FormControl, Button } from '@mui/material'
 import { useForm, SubmitHandler } from "react-hook-form";
 import { IRegister } from '../../interface/register';
 import { countries } from '../../utils/countries';
 import { isEmail } from '../../utils/valitations';
+import axios from 'axios'
 
-
-
+const registerURL =  'http://localhost:8080/api/register'
 
 const Formulario = () => {
 
     const { register, handleSubmit, formState: {errors} } = useForm<IRegister>();
-    const onSubmit: SubmitHandler<IRegister> = data => console.log(data);
+    const onSubmit: SubmitHandler<IRegister> = async (data) => axios.post(registerURL, await {
+      name:         data.name,
+      lastName:     data.lastName,
+      email:        data.email,
+      country:      data.country,
+      password:     data.password,
+
+    })
+    .then(function (response) {
+      console.log(response.data);
+      // TODO: FALTA DIRIGIR AL USUARIO A SU DASHBOARD CON EL TOKEN EN LA COOKIE
+    })
+    .catch(function (error) {
+      console.log(error);
+      // TODO: FALTAN LOS ERRORES DE LOS DATOS INGRESADOS
+    });
 
     const [country, setCountry] = useState('');
 
@@ -57,7 +38,7 @@ const Formulario = () => {
 
   return (
     <>
-        <Box 
+        <Box
             bgcolor={'white'}
             padding={3}
             borderRadius={1.2}

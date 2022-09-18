@@ -1,11 +1,12 @@
 import { Box, Typography } from '@mui/material'
 import React from 'react'
+import TableRank from './TableRank'
 
 const Rank = () => {
   return (
     <>
-        <Box bgcolor={'orange'} height={'300px'} width={'100%'}>
-            <Typography color={'white'} fontSize={'30px'}> Esto es ranking top 8</Typography>
+        <Box bgcolor={'white'} height={'400px'} width={'100%'}>
+            <TableRank/>
         </Box>
     </>
 
