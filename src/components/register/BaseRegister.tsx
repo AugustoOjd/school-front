@@ -1,9 +1,9 @@
 import React from 'react'
 import { Box, Typography, Stack } from '@mui/material';
 import Formulario from './Formulario'
-import FormLoginUser from './FormLoginUser';
+import FormLoginUser from '../user/loginUser/form/FormLoginUser';
 
-const Form = () => {
+const BaseRegister = () => {
   return (
     <>
         <Box 
@@ -23,7 +23,9 @@ const Form = () => {
             <Box
               width={'100%'}
             >
-              <FormLoginUser/>
+              <Typography>
+                Explicacion del registo
+              </Typography>
             </Box>
 
             <Box 
@@ -45,4 +47,4 @@ const Form = () => {
   )
 }
 
-export default Form
+export default BaseRegister

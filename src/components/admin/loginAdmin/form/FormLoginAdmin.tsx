@@ -1,15 +1,14 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import { Box, Button, Stack, TextField, Typography } from '@mui/material'
 import { useForm, SubmitHandler } from "react-hook-form";
-import { ILogin } from '../../interface/login';
-import { isEmail } from '../../utils/valitations';
+import { ILogin } from '../../../../interface/login';
+import { isEmail } from '../../../../utils/valitations';
 import axios from 'axios';
 
 
-const loginURL = 'http://localhost:8080/api/login'
+const loginAdminURL = 'http://localhost:8080/api/admin'
 
-
-const FormLoginUser = () => {
+const FormLoginAdmin = () => {
 
     const [statusOk, setStatusOk] = useState(false)
     const [statusError, setStatusError] = useState(false)
@@ -17,7 +16,7 @@ const FormLoginUser = () => {
 
     // Evento de hook form mas post con axios
     const { register, handleSubmit, formState: {errors} } = useForm<ILogin>();
-    const onSubmit: SubmitHandler<ILogin> = async (data) => axios.post(loginURL, await {
+    const onSubmit: SubmitHandler<ILogin> = async (data) => axios.post(loginAdminURL, await {
         email:      data.email,
         password:   data.password
       })
@@ -90,7 +89,8 @@ const FormLoginUser = () => {
             </form>
         </Box>
     </>
+    
   )
 }
 
-export default FormLoginUser
+export default FormLoginAdmin

@@ -1,5 +1,6 @@
 import { Box, Typography, Button, AppBar, Stack } from '@mui/material';
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -26,12 +27,27 @@ const Navbar = () => {
                 alignItems={'center'}>
                 
                 <Stack direction={'row'} spacing={1} margin={1}>
-                  <Button 
+
+                  <NavLink to={'/'}>
+                    <Button 
+                      variant='contained' 
+                      color='primary'> Home 
+                    </Button>
+                  </NavLink>
+
+                  <NavLink to={'/user/login'}>
+                    <Button 
+                      variant='contained' 
+                      color='primary'> Estudiante 
+                    </Button>
+                  </NavLink>
+
+                  <NavLink to={'/admin/login'}>
+                    <Button 
                     variant='contained' 
-                    color='primary'> Estudiante </Button>
-                  <Button 
-                    variant='contained' 
-                    color='primary'> Admin</Button>
+                    color='primary'> Admin
+                    </Button>
+                  </NavLink>
                 </Stack>
               </Box>
 
