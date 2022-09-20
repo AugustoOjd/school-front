@@ -1,8 +1,16 @@
 import { Box, Typography, Button, AppBar, Stack } from '@mui/material';
 import React from 'react'
 import { NavLink } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux'
+import type { RootState } from '../../../context';
+import { isLogout } from '../../../context/reduces/authLoginUser';
 
 const Navbar = () => {
+
+  const login = useSelector((state: RootState)=> state.validLogin.value)
+
+  const dispatch = useDispatch()
+
   return (
     <>
       
@@ -35,19 +43,39 @@ const Navbar = () => {
                     </Button>
                   </NavLink>
 
-                  <NavLink to={'/user/login'}>
-                    <Button 
-                      variant='contained' 
-                      color='primary'> Estudiante 
-                    </Button>
-                  </NavLink>
+                  {
+                    login
 
-                  <NavLink to={'/admin/login'}>
-                    <Button 
-                    variant='contained' 
-                    color='primary'> Admin
-                    </Button>
-                  </NavLink>
+                    ?
+                    <>
+                    <NavLink to={'/'}>
+                      <Button 
+                      variant='contained' 
+                      color='primary'
+                      onClick={()=> dispatch(isLogout())}
+                      > Logout
+                      </Button>
+                    </NavLink>
+                    </>
+                    :
+                    <>
+                      <NavLink to={'/user/login'}>
+                      <Button 
+                        variant='contained' 
+                        color='primary'> Estudiante 
+                      </Button>
+                      </NavLink>
+
+                      <NavLink to={'/admin/login'}>
+                        <Button 
+                        variant='contained' 
+                        color='primary'> Admin
+                        </Button>
+                      </NavLink>
+                    </>
+                  }
+
+                  
                 </Stack>
               </Box>
 

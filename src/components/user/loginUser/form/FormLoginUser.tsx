@@ -4,6 +4,10 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { ILogin } from '../../../../interface/login';
 import { isEmail } from '../../../../utils/valitations';
 import axios from 'axios';
+import Cookies from 'js-cookie';
+
+import { useSelector, useDispatch } from 'react-redux'
+import { isLogin } from '../../../../context/reduces/authLoginUser';
 
 
 const loginURL = 'http://localhost:8080/api/login'
@@ -14,6 +18,7 @@ const FormLoginUser = () => {
     const [statusOk, setStatusOk] = useState(false)
     const [statusError, setStatusError] = useState(false)
 
+    const dispatch = useDispatch()
 
     // Evento de hook form mas post con axios
     const { register, handleSubmit, formState: {errors} } = useForm<ILogin>();
@@ -22,8 +27,18 @@ const FormLoginUser = () => {
         password:   data.password
       })
       .then(function (response) {
-        console.log(response.data);
+        console.log(response.data.student);
+
+        const token = response.data.token
+
+        
+        Cookies.set('token', token)
+
+        const prueba = Cookies.get('token')
+        console.log('esto es get token  ' + prueba)
         setStatusOk(true)
+        dispatch(isLogin())
+
 
         // TODO: SI TODO DA OK, MANDAR AL USUARIO A SU DASHBOARD CON EL TOKEN EN LA COOKIE
       })
