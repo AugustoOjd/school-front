@@ -5,6 +5,7 @@ import { ILogin } from '../../../../interface/login';
 import { isEmail } from '../../../../utils/valitations';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { useCookies } from 'react-cookie'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { isLogin } from '../../../../context/reduces/authLoginUser';
@@ -18,23 +19,27 @@ const FormLoginUser = () => {
     const [statusOk, setStatusOk] = useState(false)
     const [statusError, setStatusError] = useState(false)
 
+    const [cookies, setCookie] = useCookies(['token']);
+
     const dispatch = useDispatch()
 
     // Evento de hook form mas post con axios
     const { register, handleSubmit, formState: {errors} } = useForm<ILogin>();
     const onSubmit: SubmitHandler<ILogin> = async (data) => axios.post(loginURL, await {
-        email:      data.email,
+        email:      data.email.toLowerCase(),
         password:   data.password
       })
       .then(function (response) {
-        console.log(response.data.student);
+        console.log(response.data);
 
         const token = response.data.token
 
         
-        Cookies.set('token', token)
+        // Cookies.set('token', token)
+        setCookie('token', token, { path: '/' });
 
-        const prueba = Cookies.get('token')
+        const prueba = cookies.token
+        // const prueba = Cookies.get('token')
         console.log('esto es get token  ' + prueba)
         setStatusOk(true)
         dispatch(isLogin())
