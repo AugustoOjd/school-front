@@ -16,26 +16,6 @@ export const authLoginUser = createSlice({
   reducers: {
      isLogin: (state) =>{
         state.value = true
-        // try {
-        //     const postLoginUser = async ( email: string, password: string) => { axios.post(process.env.LOGIN_USER_PATH!, await {
-        //         email:      email,
-        //         password:   password
-        //       })
-        //       .then(function (response) {
-        //         console.log(response.data.student);
-        
-        //         const token = response.data.token
-        //         // TODO: SI TODO DA OK, MANDAR AL USUARIO A SU DASHBOARD CON EL TOKEN EN LA COOKIE
-        //       })
-        //       .catch(function (error) {
-        //         console.log(error);
-        //         // TODO: FALTA MANDARLE LOS ERRORES DE FORM AL USUARIO PARA QUE PUEDA CORREGIRLOS
-        //       });
-         
-        //     }
-        // } catch (error) {
-            
-        // }
      },
      isLogout: (state) =>{
         state.value = false

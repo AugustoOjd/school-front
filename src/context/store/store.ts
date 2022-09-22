@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import authLoginUserReducer from '../reduces/authLoginUser'
+import authSessionUser from '../reduces/authSessionUser'
 
 export const store = configureStore({
   reducer: {
-    validLogin: authLoginUserReducer
+    validLogin: authLoginUserReducer,
+    SessionUser: authSessionUser
   },
 })
 

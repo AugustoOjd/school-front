@@ -2,9 +2,11 @@
 import React, {useEffect, useState} from 'react'
 import { Box, Stack, Typography } from '@mui/material'
 import axios from 'axios';
+import cookieClient from 'react-cookie'
+import { instance } from '../../api/axiosApi';
 
 
-const pointsURL = 'http://localhost:8080/api/student/dashboard'
+// const pointsURL = 'http://localhost:8080/api/student/dashboard'
 
 type Data = {
     name: string,
@@ -18,7 +20,7 @@ const TableRank = () => {
 
     useEffect(() => {
         
-        axios.get(pointsURL)
+        instance.get( '/student/dashboard')
         .then(function (response) {
           // handle success
             setUsers(response.data)

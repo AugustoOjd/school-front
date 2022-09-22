@@ -9,6 +9,11 @@ import { useCookies } from 'react-cookie'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { isLogin } from '../../../../context/reduces/authLoginUser';
+import { authSession } from '../../../../context/reduces/authSessionUser'
+
+
+import { Link, NavLink } from 'react-router-dom';
+import { RootState } from '../../../../context/store/store';
 
 
 const loginURL = 'http://localhost:8080/api/login'
@@ -22,6 +27,7 @@ const FormLoginUser = () => {
     const [cookies, setCookie] = useCookies(['token']);
 
     const dispatch = useDispatch()
+    const session = useSelector((state: RootState)=> state.SessionUser.value)
 
     // Evento de hook form mas post con axios
     const { register, handleSubmit, formState: {errors} } = useForm<ILogin>();
@@ -36,11 +42,11 @@ const FormLoginUser = () => {
 
         
         // Cookies.set('token', token)
-        setCookie('token', token, { path: '/' });
+        setCookie('token', token);
 
-        const prueba = cookies.token
-        // const prueba = Cookies.get('token')
-        console.log('esto es get token  ' + prueba)
+        const prueba = dispatch(authSession(response.data.student))
+        console.log('Eso es prueba del estado  ', prueba.payload)
+        console.log('Esto es session', session)
         setStatusOk(true)
         dispatch(isLogin())
 
@@ -98,16 +104,32 @@ const FormLoginUser = () => {
                             :
                             null
                         }
-
-                    <Button 
-                        variant='contained'
-                        color={'primary'} 
-                        fullWidth
-                        type='submit'
-                        >Ingresar
-                    </Button>
+                    
+                    {/* <Link to={'/user/123'}> */}
+                        <Button 
+                            variant='contained'
+                            color={'primary'} 
+                            fullWidth
+                            type='submit'
+                            >Ingresar
+                        </Button>
+                    {/* </Link> */}
                 </Stack>
             </form>
+        </Box>
+
+        <Box bgcolor={'darkcyan'} height={'300px'}>
+            {
+                session.map( (e)=>(
+                    <>
+                    {e.key}
+                    <Typography color={'white'}>{e.name}</Typography>
+                    <Typography color={'white'}>{e.lastName}</Typography>
+                    <Typography color={'white'}>{e.email}</Typography>
+                    <Typography color={'white'}>{e.point}</Typography>
+                    </>
+                ))
+            }
         </Box>
     </>
   )
