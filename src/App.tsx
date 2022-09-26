@@ -15,9 +15,15 @@ import Nivel3 from './Pages/niveles/Nivel3';
 import UserLogin from './Pages/UserLogin';
 import AdminLogin from './Pages/AdminLogin';
 
+// Redux
+import { useSelector } from 'react-redux';
+import { RootState } from './context';
+
 
 
 function App() {
+
+  const session = useSelector((state: RootState)=> state.SessionUser.value)
   return (
     <>
       <Router>
@@ -28,7 +34,7 @@ function App() {
 
           {/* Login y Dashboard user */}
           <Route path='/user/login' element={<UserLogin/>} />
-          <Route path='/user/123' element={<Student/>} />
+          <Route path='/user/123' element={session.length > 0 ? <Student/> : <Home/>} />
 
           {/* Login y Dashboard admin */}
           <Route path='/admin/123' element={<Admin/>} />

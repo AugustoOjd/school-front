@@ -1,15 +1,33 @@
 import { Box, Typography, Button, AppBar, Stack } from '@mui/material';
 import React from 'react'
 import { NavLink } from 'react-router-dom';
+
+import Cookies from 'js-cookie';
+import { useCookies } from 'react-cookie'
+
+// Redux
 import { useSelector, useDispatch } from 'react-redux'
 import type { RootState } from '../../../context';
 import { isLogout } from '../../../context/reduces/authLoginUser';
+import { logoutSession } from '../../../context/reduces/authSessionUser';
 
 const Navbar = () => {
 
-  const login = useSelector((state: RootState)=> state.validLogin.value)
+  const [cookies, setCookie] = useCookies(['token']);
 
+  const login = useSelector((state: RootState)=> state.validLogin.value)
+  useSelector((state: RootState)=> state.SessionUser.value)
   const dispatch = useDispatch()
+
+  const cerrarCession = ()=>{
+
+    dispatch(logoutSession())
+    dispatch(isLogout())
+    setCookie('token', null)
+
+  }
+
+
 
   return (
     <>
@@ -36,13 +54,6 @@ const Navbar = () => {
                 
                 <Stack direction={'row'} spacing={1} margin={1}>
 
-                  <NavLink to={'/'}>
-                    <Button 
-                      variant='contained' 
-                      color='primary'> Home 
-                    </Button>
-                  </NavLink>
-
                   {
                     login
 
@@ -52,13 +63,19 @@ const Navbar = () => {
                       <Button 
                       variant='contained' 
                       color='primary'
-                      onClick={()=> dispatch(isLogout())}
+                      onClick={cerrarCession}
                       > Logout
                       </Button>
                     </NavLink>
                     </>
                     :
                     <>
+                      <NavLink to={'/'}>
+                        <Button 
+                          variant='contained' 
+                          color='primary'> Home 
+                        </Button>
+                      </NavLink>
                       <NavLink to={'/user/login'}>
                       <Button 
                         variant='contained' 

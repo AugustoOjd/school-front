@@ -29,6 +29,9 @@ export const authSessionUser = createSlice({
         authSession: (state, action: PayloadAction<any>) =>{
             state.value.push(action.payload)
          },
+        logoutSession: (state) =>{
+          state.value.splice( 0, state.value.length)
+       }
       // increment: (state) => {
       //   // Redux Toolkit allows us to write "mutating" logic in reducers. It
       //   // doesn't actually mutate the state because it uses the Immer library,
@@ -46,7 +49,7 @@ export const authSessionUser = createSlice({
   })
   
   // Action creators are generated for each case reducer function
-  export const { authSession } = authSessionUser.actions
+  export const { authSession, logoutSession } = authSessionUser.actions
 
   export const session = ((state: RootState)=> state.SessionUser.value)
   

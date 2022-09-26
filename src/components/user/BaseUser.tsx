@@ -1,13 +1,13 @@
 import React from 'react'
 import BaseRank from '../rank/BaseRank'
-import Datos from './Datos'
+import BaseDashboardUser from './dashboard/BaseDashboardUser'
 import BaseTasks from './tasks/BaseTasks'
 
 const BaseUser = () => {
   return (
     <>
         <BaseRank/>
-        <Datos/>
+        <BaseDashboardUser/>
         <BaseTasks/>
     </>
   )
