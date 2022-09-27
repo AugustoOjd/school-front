@@ -34,17 +34,17 @@ function App() {
 
           {/* Login y Dashboard user */}
           <Route path='/user/login' element={<UserLogin/>} />
-          <Route path='/user/123' element={session.length > 0 ? <Student/> : <Home/>} />
+          <Route path='/user/:id' element={session.length > 0 ? <Student/> : <Home/>} />
 
           {/* Login y Dashboard admin */}
-          <Route path='/admin/123' element={<Admin/>} />
+          <Route path='/admin/:id' element={<Admin/>} />
           <Route path='/admin/login' element={<AdminLogin/>} />
 
           {/* Rutas de los niveles de los retos */}
-          <Route path='/user/123/nivel1' element={<Nivel1/>}/>
-          <Route path='/user/123/nivel2' element={<Nivel2/>}/>
-          <Route path='/user/123/nivel3' element={<Nivel3/>}/>
-          <Route path='/user/123/nivel4' element={<Nivel4/>}/>
+          <Route path='/user/:id/nivel1' element={<Nivel1/>}/>
+          <Route path='/user/:id/nivel2' element={<Nivel2/>}/>
+          <Route path='/user/:id/nivel3' element={<Nivel3/>}/>
+          <Route path='/user/:id/nivel4' element={<Nivel4/>}/>
           
         </Routes>
 

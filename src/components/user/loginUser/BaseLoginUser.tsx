@@ -6,11 +6,11 @@ const BaseLoginUser = () => {
   return (
     <>
         <Box
-            bgcolor={'white'}
+            bgcolor={'primary.light'}
             width={'100%'}
-            height={'800px'}
+            height={'500px'}
+            paddingTop={'80px'}
         >
-            <Typography fontSize={'30px'}> Login User</Typography>
             <FormLoginUser/>
         </Box>
     </>

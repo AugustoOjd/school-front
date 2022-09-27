@@ -4,7 +4,7 @@ import { Box, Typography } from '@mui/material'
 const Footer = () => {
   return (
     <>
-        <Box bgcolor={'beige'} width={'100%'} height={'180px'}>
+        <Box bgcolor={'secondary.dark'} width={'100%'} height={'180px'}>
             <Typography color={'black'} fontSize={' 30px'}> Esto esa footer</Typography>
         </Box>
     </>

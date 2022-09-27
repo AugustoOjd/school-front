@@ -1,6 +1,8 @@
-import { Box, Typography, Button, AppBar, Stack } from '@mui/material';
 import React from 'react'
 import { NavLink } from 'react-router-dom';
+
+import { Box, Typography, Button, AppBar, Stack, Avatar } from '@mui/material';
+import HomeIcon from '@mui/icons-material/Home';
 
 import Cookies from 'js-cookie';
 import { useCookies } from 'react-cookie'
@@ -10,6 +12,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import type { RootState } from '../../../context';
 import { isLogout } from '../../../context/reduces/authLoginUser';
 import { logoutSession } from '../../../context/reduces/authSessionUser';
+import { blue, pink } from '@mui/material/colors';
 
 const Navbar = () => {
 
@@ -37,13 +40,37 @@ const Navbar = () => {
           <Box
             display={'flex'}
             alignItems={'center'}
-            bgcolor={'green'} 
+            bgcolor={'secondary.dark'} 
             width={'100%'} 
             height={'75px'}
             >
 
-                <Box margin={1}>
-                  <Typography color={'white'} fontSize={'30px'}>Logo</Typography>
+                <Box 
+                  margin={1}
+                  display={'flex'}
+                  alignItems={'center'}
+                  >
+                  <Typography color={'primary.light'} fontSize={'30px'}>Logo</Typography>
+
+                  {
+                    login
+                    ?
+                    null
+                    :
+                    <NavLink to={'/'}>
+                        <Button
+                          // size={'small'}
+                          // variant='contained' 
+                          // color='primary'
+                          >
+                            <HomeIcon
+                              fontSize='large'
+                              sx={{color: 'primary.light', bgcolor: 'primary',boxShadow: 2, borderRadius: 1}}
+                              />
+                        </Button>
+                    </NavLink>
+                    }
+
                 </Box>
 
               <Box           
@@ -60,7 +87,8 @@ const Navbar = () => {
                     ?
                     <>
                     <NavLink to={'/'}>
-                      <Button 
+                      <Button
+                      size={'small'}
                       variant='contained' 
                       color='primary'
                       onClick={cerrarCession}
@@ -70,21 +98,18 @@ const Navbar = () => {
                     </>
                     :
                     <>
-                      <NavLink to={'/'}>
-                        <Button 
-                          variant='contained' 
-                          color='primary'> Home 
-                        </Button>
-                      </NavLink>
+                      
                       <NavLink to={'/user/login'}>
-                      <Button 
+                      <Button
+                        size={'small'} 
                         variant='contained' 
-                        color='primary'> Estudiante 
+                        color='primary'> Login 
                       </Button>
                       </NavLink>
 
                       <NavLink to={'/admin/login'}>
-                        <Button 
+                        <Button
+                        size={'small'}
                         variant='contained' 
                         color='primary'> Admin
                         </Button>

@@ -1,5 +1,11 @@
 export const countries = [
     'Argentina',
     'Bolivia', 
-    'Chile'
+    'Chile',
+    'Colombia',
+    'Costa Rica',
+    'Mexico',
+    'Peru',
+    'Uruguay',
+    'Venezuela'
 ]

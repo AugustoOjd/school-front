@@ -16,46 +16,75 @@ type Data = {
 const TableRank = () => {
 
     const [users, setUsers] = useState<Data[]>()
+    const [controlError, setControlError] = useState(false)
 
 
     useEffect(() => {
         
         instance.get( '/student/dashboard')
-        .then(function (response) {
+        .then((res) => {
           // handle success
-            setUsers(response.data)
-          console.log(response);
+
+          const orderUsers = (res.data).sort((a:any, b:any) => b.point - a.point)
+          const orderCompleted = orderUsers.slice(0, 5)
+
+            setUsers(orderCompleted)
+          // console.log(res.data);
         })
-        .catch(function (error) {
+        .catch((error)=> {
+
+            setControlError(true)
+          
           // handle error
-          console.log(error);
+          // console.log(error);
         })
-        .then(function () {
-          // always executed
-        });
       
     
 
     }, [])
     
 
+    // const orderUsers = (users.point).sort((a: any, b: any) => a - b)
+
 
 
   return (
     <>
-        <Box display={'flex'} flexDirection={'column'} alignItems={'center'}>
-            <Typography color={'black'} fontSize={'30px'}> Rank de puntos </Typography>
-            <Stack direction={'column'}>
-                {
-                    users?.map( (user)=> (
-                    <Typography fontSize={'20px'} key={user.name}>
-                        {`${user.name.toUpperCase()} - ${user.point}`}
-                    </Typography>
-                    ))
-                
-                }
-            </Stack>
-        </Box>
+        {
+          controlError
+
+          ?
+            <Box 
+            display={'flex'} 
+            flexDirection={'column'}
+            justifyContent={'center'} 
+            alignItems={'center'}
+            mt={2}
+            >
+              <Typography color={'black'} fontSize={'30px'}> No podemos mostrar el ranking en este momento </Typography>
+
+            </Box>
+          :
+            <Box 
+              display={'flex'} 
+              flexDirection={'column'} 
+              alignItems={'center'}
+              mt={2}
+              >
+                <Typography color={'black'} fontSize={'30px'}> Rank de puntos </Typography>
+                <Stack direction={'column'}>
+                    {
+                        users?.map( (user)=> (
+                        <Typography fontSize={'20px'} key={user.name}>
+                            {`${user.name.toUpperCase()} - ${user.point}`}
+                        </Typography>
+                        ))
+                        
+                    }
+                </Stack>
+            </Box>
+        
+        }
     </>
   )
 }

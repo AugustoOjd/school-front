@@ -8,9 +8,8 @@ const BaseLoginAdmin = () => {
         <Box
             bgcolor={'white'}
             width={'100%'}
-            height={'800px'}
+            height={'400px'}
         >
-          <Typography fontSize={'30px'}> Login Admin</Typography>
             <FormLoginAdmin/>
         </Box>
     </>

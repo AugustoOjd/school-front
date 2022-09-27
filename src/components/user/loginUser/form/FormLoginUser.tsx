@@ -3,8 +3,6 @@ import { Box, Button, Stack, TextField, Typography } from '@mui/material'
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ILogin } from '../../../../interface/login';
 import { isEmail } from '../../../../utils/valitations';
-import axios from 'axios';
-import Cookies from 'js-cookie';
 import { useCookies } from 'react-cookie'
 
 // Redux toolkit
@@ -64,7 +62,7 @@ const FormLoginUser = () => {
                 }
 
                 if(estado){
-                    navigate('/user/123')
+                    navigate(`/user/${student.id}`)
                 }
 
             })
@@ -110,11 +108,19 @@ const FormLoginUser = () => {
     <>
         <Box
             bgcolor={'white'}
-            padding={5}
-            borderRadius={1.2}
-            boxShadow={2}
-            
+            padding={3}
+            paddingX={{xs: 2, sm: 8}}
+            borderRadius={2}
+            boxShadow={3}
+            marginX={{xs: 2, sm: 12}}
         >
+            <Typography
+                fontSize={'30px'}
+                textAlign={'center'}
+                mb={3}
+            >
+                Inicia sesion
+            </Typography>
             <form
             onSubmit={handleSubmit(onSubmit)}
             >
@@ -163,19 +169,6 @@ const FormLoginUser = () => {
                 </Stack>
             </form>
         </Box>
-
-        {/* <Box bgcolor={'darkcyan'} height={'300px'}>
-            {
-                session.map( (e)=>(
-                    <>
-                    <Typography fontSize={30} color={'white'}>{e.name}</Typography>
-                    <Typography fontSize={30} color={'white'}>{e.lastName}</Typography>
-                    <Typography fontSize={30} color={'white'}>{e.email}</Typography>
-                    <Typography fontSize={30} color={'white'}>{e.point}</Typography>
-                    </>
-                ))
-            }
-        </Box> */}
     </>
   )
 }
