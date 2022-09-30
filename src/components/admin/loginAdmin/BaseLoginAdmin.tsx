@@ -6,9 +6,10 @@ const BaseLoginAdmin = () => {
   return (
     <>
         <Box
-            bgcolor={'white'}
+            paddingTop={'80px'}
+            bgcolor={'primary.light'}
             width={'100%'}
-            height={'400px'}
+            height={'500px'}
         >
             <FormLoginAdmin/>
         </Box>

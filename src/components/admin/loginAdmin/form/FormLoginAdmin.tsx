@@ -35,7 +35,6 @@ const FormLoginAdmin = () => {
   return (
     <>
         <Box
-            mt={'60px'}
             bgcolor={'white'}
             padding={3}
             paddingX={{xs: 2, sm: 8}}
@@ -50,7 +49,7 @@ const FormLoginAdmin = () => {
                 textAlign={'center'}
                 mb={3}
             >
-                Session Admin
+                Sesion Admin
             </Typography>
             <form
             onSubmit={handleSubmit(onSubmit)}>

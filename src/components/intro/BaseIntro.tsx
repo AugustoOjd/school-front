@@ -1,11 +1,17 @@
 import { Box, Typography } from '@mui/material'
 import React from 'react'
+import CardIntro from './CardIntro'
 
 const Intro = () => {
   return (
     <>
-        <Box bgcolor={'gray'} width={'100%'} height={'250px'}>
-            <Typography color={'white'} fontSize={'30px'}> Esto es la explicacion</Typography>
+        <Box 
+          paddingY={{xs: 2, md: 4}}
+          bgcolor={'secondary.light'} 
+          height={{ xs: '350px', md: '450px'}} 
+          width={'100%'}
+          >
+            <CardIntro/>
         </Box>
     </>
   )

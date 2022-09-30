@@ -119,7 +119,7 @@ const FormLoginUser = () => {
                 textAlign={'center'}
                 mb={3}
             >
-                Inicia sesion
+                Sesion Usuario
             </Typography>
             <form
             onSubmit={handleSubmit(onSubmit)}

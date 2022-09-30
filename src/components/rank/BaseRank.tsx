@@ -5,9 +5,10 @@ import TableRank from './TableRank'
 const Rank = () => {
   return (
     <>
-        <Box 
-          bgcolor={'white'} 
-          height={'300px'} 
+        <Box
+          paddingTop={{xs: 5, md: 10}}
+          bgcolor={'primary.light'} 
+          height={{ xs: '400px', md: '500px'}} 
           width={'100%'}
           >
             <TableRank/>
