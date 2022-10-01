@@ -6,9 +6,9 @@ const Intro = () => {
   return (
     <>
         <Box 
-          paddingY={{xs: 2, md: 4}}
+          // paddingY={{xs: 2, md: 4}}
           bgcolor={'secondary.light'} 
-          height={{ xs: '350px', md: '450px'}} 
+          height={{ xs: '400px', md: '500px', lg: '700px'}} 
           width={'100%'}
           >
             <CardIntro/>

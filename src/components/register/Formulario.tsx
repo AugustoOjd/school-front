@@ -83,7 +83,7 @@ const Formulario = () => {
             borderRadius={2}
             boxShadow={3}
             marginX={{xs: 2, sm: 2}}
-            mt={4}
+            mt={3}
         >
             <Typography
                 fontSize={'30px'}

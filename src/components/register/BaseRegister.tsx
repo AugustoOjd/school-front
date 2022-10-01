@@ -2,6 +2,7 @@ import React from 'react'
 import { Box, Typography, Stack } from '@mui/material';
 import Formulario from './Formulario'
 import FormLoginUser from '../user/loginUser/form/FormLoginUser';
+import Details from './Details';
 
 const BaseRegister = () => {
   return (
@@ -10,7 +11,7 @@ const BaseRegister = () => {
           display={'flex'} 
           bgcolor={'primary.light'} 
           width={'100%'} 
-          height={{ xs: '1200px', md:'700px'}}
+          height={{ xs: '1200px', md:'680px', lg: '700px' }}
           >
 
           <Stack 
@@ -21,19 +22,18 @@ const BaseRegister = () => {
             >
             
             <Box
-              bgcolor={'orange'}
+              // bgcolor={'orange'}
               width={'100%'}
+              // marginTop={}
               height={{xs: '50%', md: '100%'}}
             >
-              <Typography>
-                Explicacion del registo
-              </Typography>
+                <Details/>
             </Box>
 
             <Box 
               width={'100%'}
               marginRight={5}
-              marginTop={5}
+              marginTop={3}
               height={{xs: '50%', md: '100%'}}
               >
 

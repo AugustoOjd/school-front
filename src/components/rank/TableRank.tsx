@@ -130,7 +130,7 @@ const TableRank = () => {
                           fontSize={{xs: '18px', md: '20px'}} 
                           color={'secondary.light'}
                           >
-                            {`${users![0].name.toUpperCase()}: ${users![0].point}`}
+                            {`${users![0].name.toUpperCase().slice(0,7)}: ${users![0].point}`}
                         </Typography>
                         <WorkspacePremiumIcon/>
                       </Box>
@@ -149,7 +149,7 @@ const TableRank = () => {
                           fontSize={{xs: '18px', md: '20px'}}
                           color={'secondary.light'}
                           >
-                            {`${users![1].name.toUpperCase()}: ${users![1].point}`}
+                            {`${users![1].name.toUpperCase().slice(0,7)}: ${users![1].point}`}
                         </Typography>
                         <Typography
                           fontSize={{xs: '18px', md: '20px'}}
@@ -170,7 +170,7 @@ const TableRank = () => {
                           fontSize={{xs: '18px', md: '20px'}}
                           color={'secondary.light'}
                           >
-                            {`${users![2].name.toUpperCase()}: ${users![2].point}`}
+                            {`${users![2].name.toUpperCase().slice(0,7)}: ${users![2].point}`}
                         </Typography>
                         <Typography
                           fontSize={{xs: '18px', md: '20px'}}
@@ -191,7 +191,7 @@ const TableRank = () => {
                           fontSize={{xs: '18px', md: '20px'}}
                           color={'secondary.light'}
                           >
-                            {`${users![3].name.toUpperCase()}: ${users![3].point}`}
+                            {`${users![3].name.toUpperCase().slice(0,7)}: ${users![3].point}`}
                         </Typography>
                       </Box>
                       <Divider/>
@@ -210,7 +210,7 @@ const TableRank = () => {
                           fontSize={{xs: '18px', md: '20px'}}
                           color={'secondary.light'}
                           >
-                            {`${users![4].name.toUpperCase()}: ${users![4].point}`}
+                            {`${users![4].name.toUpperCase().slice(0,7)}: ${users![4].point}`}
                         </Typography>
                       </Box>
                     </>
