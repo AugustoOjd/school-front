@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import { Box, Typography, Button, AppBar, Stack, Avatar } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
+import MonetizationOnOutlinedIcon from '@mui/icons-material/MonetizationOnOutlined';
 
 import Cookies from 'js-cookie';
 import { useCookies } from 'react-cookie'
@@ -12,14 +13,14 @@ import { useSelector, useDispatch } from 'react-redux'
 import type { RootState } from '../../../context';
 import { isLogout } from '../../../context/reduces/authLoginUser';
 import { logoutSession } from '../../../context/reduces/authSessionUser';
-import { blue, pink } from '@mui/material/colors';
+import { blue, pink, orange } from '@mui/material/colors';
 
 const Navbar = () => {
 
   const [cookies, setCookie] = useCookies(['token']);
 
   const login = useSelector((state: RootState)=> state.validLogin.value)
-  useSelector((state: RootState)=> state.SessionUser.value)
+  const session = useSelector((state: RootState)=> state.SessionUser.value)
   const dispatch = useDispatch()
 
   const cerrarCession = ()=>{
@@ -50,8 +51,20 @@ const Navbar = () => {
                   display={'flex'}
                   alignItems={'center'}
                   >
-                  <Typography color={'primary.light'} fontSize={'30px'}>Logo</Typography>
-
+                  <Typography 
+                      component={'h1'}
+                      fontStyle={'italic'}
+                      fontSize={{xs: '30px', sm: '40px', md: '45px', lg: '50px'}}
+                      color={orange[400]}
+                      fontWeight={'bold'}
+                      >U</Typography>
+                  <Typography 
+                      component={'h2'}
+                      fontStyle={'italic'}
+                      fontSize={{xs: '30px', sm: '40px', md: '45px', lg: '50px'}}
+                      color={'primary.dark'}
+                      fontWeight={'bold'}
+                    >C</Typography>
                   {
                     login
                     ?
@@ -86,6 +99,27 @@ const Navbar = () => {
 
                     ?
                     <>
+                    <Box 
+                      display={'flex'}
+                      mr={0.5}
+                      bgcolor={'secondary.dark'}
+                      p={0.5}
+                      borderRadius={1}
+                      boxShadow={2}
+                      >
+                      <MonetizationOnOutlinedIcon
+                        fontSize='small'
+                      />
+                        {
+                          session?.map((p)=>(
+                            <Typography
+                              ml={1}
+                              color={orange[500]}
+                              fontWeight={'bold'}
+                            >{p.point}</Typography>
+                          ))
+                        }
+                    </Box>
                     <NavLink to={'/'}>
                       <Button
                       size={'small'}

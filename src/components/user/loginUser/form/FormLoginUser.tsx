@@ -49,7 +49,7 @@ const FormLoginUser = () => {
 
                 setCookie('token', token);
 
-                console.log(student, token)
+                // console.log(student, token)
 
                 const estado = dispatch(authSession(student))
 
@@ -67,7 +67,7 @@ const FormLoginUser = () => {
 
             })
             .catch((err)=>{
-                console.log(err)
+                // console.log(err)
                 setStatusError(true)
             })
     }
@@ -112,11 +112,12 @@ const FormLoginUser = () => {
             paddingX={{xs: 2, sm: 8}}
             borderRadius={2}
             boxShadow={3}
-            marginX={{xs: 2, sm: 12}}
+            marginX={{xs: 4, sm: 12, md: 20, lg: 40}}
         >
             <Typography
                 fontSize={'30px'}
                 textAlign={'center'}
+                color={'secondary.light'}
                 mb={3}
             >
                 Sesion Usuario

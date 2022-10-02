@@ -8,7 +8,7 @@ const Rank = () => {
         <Box
           paddingTop={{xs: 5, md: 10}}
           bgcolor={'primary.light'} 
-          height={{ xs: '400px', md: '500px'}} 
+          height={{ xs: '450px', md: '550px'}} 
           width={'100%'}
           >
             <TableRank/>

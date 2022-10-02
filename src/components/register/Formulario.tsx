@@ -89,7 +89,7 @@ const Formulario = () => {
                 fontSize={'30px'}
                 textAlign={'center'}
                 mb={3}
-                color={'primary'}
+                color={'secondary.light'}
             >
                 Registrarse
             </Typography>

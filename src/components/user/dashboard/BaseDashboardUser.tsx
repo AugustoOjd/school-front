@@ -11,9 +11,8 @@ const BaseDashboardUser = () => {
   return (
     <>
         <Box 
-            bgcolor={'darkcyan'} 
-            height={'500px'}
-            paddingY={6}
+            bgcolor={'secondary.dark'} 
+            height={{xs: '600px', sm: '500px'}}
             width={'100%'}
             >
             {
@@ -21,7 +20,9 @@ const BaseDashboardUser = () => {
                     <CardDashboardUser  iniciales={(e.name.charAt(0).toUpperCase() + e.lastName.charAt(0).toUpperCase())} 
                                         nombre={(e.name.charAt(0).toUpperCase()) + e.name.slice(1)} 
                                         apellido={(e.lastName.charAt(0).toUpperCase()) + e.lastName.slice(1)} 
-                                        puntos={e.point}/>
+                                        puntos={e.point}
+                                        key={e.id}
+                                        />
                 ))
             }
         </Box>

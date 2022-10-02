@@ -81,16 +81,27 @@ const TableRank = () => {
               width={'100%'}
 
               >
-                <Typography
-                  fontFamily={'sans-serif'}
-                  color={'secondary.light'} 
-                  fontSize={{xs: '30px', md: '40px'}}
-                  fontWeight={'bold'}
-                  paddingBottom={3}
-                  
-                  > 
-                  Rank de puntos <BackupTableIcon fontSize={'large'}/>
-                  </Typography>
+                <Box
+                    bgcolor={'secondary.dark'}
+                    borderRadius={3}
+                    p={0.5}
+                    width={'90%'}
+                    mb={2}
+                    display={'flex'}
+                    justifyContent={'center'}
+                    alignItems={'center'}
+                >
+                  <Typography
+                    color={'white'} 
+                    fontSize={{xs: '30px', md: '40px'}}
+                    fontWeight={'bold'}
+                    // paddingBottom={3}
+                    // textAlign={'center'}
+                    > 
+                    Rank de puntos 
+                    </Typography>
+
+                </Box>
                 <Stack
                 bgcolor={'white'}
                 padding={2}

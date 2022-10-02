@@ -22,9 +22,7 @@ const BaseRegister = () => {
             >
             
             <Box
-              // bgcolor={'orange'}
               width={'100%'}
-              // marginTop={}
               height={{xs: '50%', md: '100%'}}
             >
                 <Details/>
@@ -33,7 +31,7 @@ const BaseRegister = () => {
             <Box 
               width={'100%'}
               marginRight={5}
-              marginTop={3}
+              marginTop={4}
               height={{xs: '50%', md: '100%'}}
               >
 

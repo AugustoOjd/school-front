@@ -56,7 +56,7 @@ const CardIntro = () => {
                                         U
                                 </Typography>
                                 <Typography 
-                                    component={'h1'}
+                                    component={'h2'}
                                     fontStyle={'italic'}
                                     fontSize={{xs: '20px', sm: '30px', md: '40px', lg: '60px'}}
                                     color={'secondary.light'}
