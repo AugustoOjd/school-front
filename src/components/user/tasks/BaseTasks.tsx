@@ -1,5 +1,5 @@
-import { Box, Button, Card, CardContent, CardMedia, Stack, Typography } from '@mui/material'
 import React, {useState, useEffect} from 'react'
+import { Box, Button, Card, CardContent, CardMedia, Stack, Typography } from '@mui/material'
 import { NavLink } from 'react-router-dom'
 import { green, orange } from '@mui/material/colors';
 
@@ -15,6 +15,8 @@ const BaseTasks = () => {
     const [user, setUser] = useState(0)
 
     const data = session.map(e=> e.point)
+    const _id = session.map(e=> e.id)
+
 
     useEffect(() => {
         setUser(data[0])
@@ -67,28 +69,31 @@ const BaseTasks = () => {
                     sx={{backgroundColor: green[100]}}
                     >
                     <CardMedia
+                      sx={{objectFit: 'fill'}}
                       component="img"
                       height="140"
                       image="https://png.pngtree.com/thumb_back/fh260/background/20190220/ourmid/pngtree-cartoon-education-training-cram-school-image_9149.jpg"
                       alt="nivel 1"
                     />
                     <CardContent>
-                        <Button
-                            variant='contained'
-                            color={'primary'}
-                            size={'large'}
-                            fullWidth 
-                        >
-                            Nivel 1
-                        </Button>
+                        <NavLink to={`/user/${_id[0]}/nivel1`}>
+                            <Button
+                                variant='contained'
+                                color={'primary'}
+                                size={'large'}
+                                fullWidth 
+                            >
+                                Nivel 1
+                            </Button>
+                        </NavLink>
                     </CardContent>
                 </Card>
-
 
                 <Card
                     sx={{backgroundColor: green[100]}}
                     >
                     <CardMedia
+                      sx={{objectFit: 'fill'}}
                       component="img"
                       height="140"
                       image="https://png.pngtree.com/thumb_back/fh260/background/20190221/ourmid/pngtree-school-season-back-to-school-season-blue-cartoon-image_11842.jpg"
@@ -124,6 +129,7 @@ const BaseTasks = () => {
                     sx={{backgroundColor: green[100]}}
                     >
                     <CardMedia
+                      sx={{objectFit: 'fill'}}
                       component="img"
                       height="140"
                       image="https://img.freepik.com/premium-vector/travel-around-world-banner_24797-1115.jpg"
@@ -159,6 +165,7 @@ const BaseTasks = () => {
                     sx={{backgroundColor: green[100]}}
                     >
                     <CardMedia
+                      sx={{objectFit: 'fill'}}
                       component="img"
                       height="140"
                       image="https://png.pngtree.com/thumb_back/fh260/back_our/20190625/ourmid/pngtree-bloody-youth-may-fourth-youth-festival-poster-banner-image_260820.jpg"

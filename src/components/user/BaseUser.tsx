@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { FC, ReactNode } from 'react'
 import BaseRank from '../rank/BaseRank'
 import BaseDashboardUser from './dashboard/BaseDashboardUser'
 import BaseTasks from './tasks/BaseTasks'
 
-const BaseUser = () => {
+
+interface Props {
+  children: ReactNode
+}
+
+const BaseUser:FC<Props> = ({children}) => {
   return (
     <>
         <BaseRank/>
         <BaseDashboardUser/>
-        <BaseTasks/>
+        {children}
     </>
   )
 }

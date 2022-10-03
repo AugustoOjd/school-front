@@ -38,9 +38,9 @@ const FormLoginAdmin = () => {
             bgcolor={'white'}
             padding={3}
             paddingX={{xs: 2, sm: 8}}
-            borderRadius={1.2}
+            borderRadius={2}
             boxShadow={3}
-            marginX={{xs: 2, sm: 12}}
+            marginX={{xs: 4, sm: 12, md: 20, lg: 40}}
             
         >
 

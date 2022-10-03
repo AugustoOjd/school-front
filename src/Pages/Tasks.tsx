@@ -1,20 +1,18 @@
 import React from 'react'
 import Layout from '../components/layout/Layout'
-import BaseRank from '../components/rank/BaseRank'
 import BaseUser from '../components/user/BaseUser'
-import BaseTasks from '../components/user/tasks/BaseTasks'
+import CardTask from '../components/user/tasks/CardTask'
 
-const Student = () => {
+const Tasks = () => {
   return (
     <>
         <Layout>
             <BaseUser>
-              <BaseTasks/>
+              <CardTask/>
             </BaseUser>
         </Layout>
-
     </>
   )
 }
 
-export default Student
+export default Tasks

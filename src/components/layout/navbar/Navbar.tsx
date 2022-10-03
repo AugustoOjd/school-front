@@ -28,7 +28,7 @@ const Navbar = () => {
     dispatch(logoutSession())
     dispatch(isLogout())
     setCookie('token', null)
-
+    window.scrollTo( 0, 0)
   }
 
 
@@ -75,6 +75,7 @@ const Navbar = () => {
                           // size={'small'}
                           // variant='contained' 
                           // color='primary'
+                          onClick={()=> window.scrollTo( 0, 0)}
                           >
                             <HomeIcon
                               fontSize='large'
@@ -113,6 +114,7 @@ const Navbar = () => {
                         {
                           session?.map((p)=>(
                             <Typography
+                              key={p.id}
                               ml={1}
                               color={orange[500]}
                               fontWeight={'bold'}
@@ -137,7 +139,9 @@ const Navbar = () => {
                       <Button
                         size={'small'} 
                         variant='contained' 
-                        color='primary'> Login 
+                        color='primary'
+                        onClick={()=> window.scrollTo( 0, 0)}
+                        > Login 
                       </Button>
                       </NavLink>
 
@@ -145,7 +149,9 @@ const Navbar = () => {
                         <Button
                         size={'small'}
                         variant='contained' 
-                        color='primary'> Admin
+                        color='primary'
+                        onClick={()=> window.scrollTo( 0, 0)}
+                        > Admin
                         </Button>
                       </NavLink>
                     </>
