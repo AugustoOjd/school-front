@@ -1,35 +1,24 @@
 
-import React, {useState} from 'react'
+import React, {FC, useState} from 'react'
 import { Box, Button, Card, CardContent, CardMedia, Checkbox, FormControlLabel, FormGroup, Typography } from '@mui/material'
 
 
-type FormValues = {
-    option1:  string;
-    option2:  string;
-    option3:  string;
-    option4:  string
-  };
+interface Props {
+    img:        string,
+    question:   string,
+    option1:    number, 
+    option2:    number, 
+    option3:    number, 
+    option4:    number,
+    event1:      ()=> void
+    event2:      ()=> void
+    event3:      ()=> void
+    event4:      ()=> void
+}
 
-  const data = [{
-    img: "https://www.enter.co/wp-content/uploads/2021/07/Aliens-Newt-Ripley.jpeg",
-    pregunta: 'En la pelicula Alien como se llama la ni;a que rescada la comandate Ripley?',
-    opciones: [ {
-        a: 'josefa', 
-        b: 'manuela', 
-        c: 'lupita', 
-        d: 'abigail'}] 
-  }]
 
-  console.log(data)
 
-const DetailsCardTask = () => {
-
-    const [checked, setChecked] = useState(false);
-
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      setChecked(event.target.checked);
-    };
-
+const DetailsCardTask:FC<Props> = ({img, question, option1, option2, option3, option4, event1, event2, event3, event4}) => {
 
   return (
     <>
@@ -79,29 +68,45 @@ const DetailsCardTask = () => {
                 <Card
                     sx={{display: 'flex', height: '85%', width: '100%', flexDirection: {xs: 'column', sm: 'row'}}}
                 >
-
-                    {
-                        data.map(e=>(
-                            <>
                             <CardMedia
                               component="img"
                               sx={{ width: { xs: '100%', sm: '60%'}, height: {xs: '50%', sm: '100%'}, objectFit: 'fill' }}
-                              image={e.img}
-                              alt={e.img}
+                              image={img}
+                              alt={img}
                             />
     
                         <CardContent sx={{ width: { xs: '100%', sm: '40%'}, height: {xs: '50%', sm: '100%'} }}>
                           <Typography
                             
                           >
-                            {e.pregunta}
+                            {question}
                           </Typography>
+                        <Box>
+                                <Button
+                                    onClick={()=> event1()}
+                                    >
+                                    {option1}
+                                </Button> 
+                                <Button
+                                    onClick={()=> event2()}
+                                >
+                                    {option2}
+                                </Button>
+
+                                <Button
+                                    onClick={()=> event3()}
+                                >
+                                    {option3}
+                                </Button> 
+                                <Button
+                                    onClick={()=> event4()}
+                                >
+                                    {option4}
+                                </Button>  
+                            </Box>
+                          
                         </CardContent>
-                        </>
 
-                        ))
-
-                    }
                 </Card>
             </Box>
 
