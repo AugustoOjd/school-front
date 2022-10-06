@@ -1,5 +1,7 @@
+import React, {useState, useEffect} from 'react'
+import ReactPaginate from 'react-paginate'
+
 import { Box } from '@mui/material'
-import React from 'react'
 import DetailsCardTask from './DetailsCardTask'
 
 const data = [
@@ -70,9 +72,28 @@ const resultado:Number[] = []
 
 // console.log( {resultado })
 
-
+const PER_PAGE = 1
 
 const CardTask = () => {
+
+  const [currentPage, setCurrentPage] = useState(0);
+  const [data, setData] = useState([]);
+  
+
+  const [itemOffset, setItemOffset] = useState(0);
+
+  // Invoke when user click to request another page.
+  const handlePageClick = ( { selected: selectedPage}:any) => {
+    console.log('SelectedPage', selectedPage)
+    setCurrentPage(selectedPage)
+  };
+
+  const offset = currentPage * PER_PAGE
+
+  const currentPageData = data
+    .slice(offset, offset + PER_PAGE)
+    .map()
+
 
   const handlerPuntos = (valor: number)=>{
     console.log(valor)
