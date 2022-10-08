@@ -12,7 +12,7 @@ const BaseDashboardUser = () => {
     <>
         <Box 
             bgcolor={'secondary.dark'} 
-            height={{xs: '600px', sm: '500px'}}
+            height={{xs: '600px', sm: '470px', lg: '500px'}}
             width={'100%'}
             >
             {

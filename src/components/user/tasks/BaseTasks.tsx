@@ -101,8 +101,9 @@ const BaseTasks = () => {
                     />
                     <CardContent>
                         {
-                        user < 60
+                        user < 20
                         ?
+
                         <Button
                             variant='contained'
                             color={'primary'}
@@ -112,15 +113,19 @@ const BaseTasks = () => {
                         >
                             Pocos puntos
                         </Button>
+                        
                         :
-                        <Button
-                            variant='contained'
-                            color={'primary'}
-                            size={'large'}
-                            fullWidth
-                        >
-                            NIVEL 2
-                        </Button>
+
+                        <NavLink to={`/user/${_id[0]}/nivel2`}>
+                            <Button
+                                variant='contained'
+                                color={'primary'}
+                                size={'large'}
+                                fullWidth
+                            >
+                                NIVEL 2
+                            </Button>
+                        </NavLink>
                         }
                     </CardContent>
                 </Card>
