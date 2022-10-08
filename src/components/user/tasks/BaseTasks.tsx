@@ -37,7 +37,7 @@ const BaseTasks = () => {
         <Stack 
             direction={'column'} 
             spacing={3}
-            width={'80%'}
+            width={{ xs: '80%', md: '60%'}}
             >
                 
                 <Box
@@ -142,8 +142,9 @@ const BaseTasks = () => {
                     />
                     <CardContent>
                     {
-                        user < 160
+                        user < 20
                         ?
+                        
                         <Button
                             variant='contained'
                             color={'primary'}
@@ -154,14 +155,17 @@ const BaseTasks = () => {
                             Pocos puntos
                         </Button>
                         :
-                        <Button
-                            variant='contained'
-                            color={'primary'}
-                            size={'large'}
-                            fullWidth
-                        >
-                            NIVEL 3
-                        </Button>
+                        <NavLink to={`/user/${_id[0]}/nivel3`}>
+                            <Button
+                                variant='contained'
+                                color={'primary'}
+                                size={'large'}
+                                fullWidth
+                                onClick={()=> window.scroll(0, 1000)}
+                            >
+                                NIVEL 3
+                            </Button>
+                        </NavLink>
                         }
                     </CardContent>
                 </Card>
@@ -178,7 +182,7 @@ const BaseTasks = () => {
                     />
                     <CardContent>
                     {
-                        user < 260
+                        user < 20
                         ?
                         <Button
                             variant='contained'
@@ -190,14 +194,17 @@ const BaseTasks = () => {
                             Pocos puntos
                         </Button>
                         :
-                        <Button
-                            variant='contained'
-                            color={'primary'}
-                            size={'large'}
-                            fullWidth
-                        >
-                            NIVEL 4
-                        </Button>
+                        <NavLink to={`/user/${_id[0]}/nivel4`}>
+                            <Button
+                                variant='contained'
+                                color={'primary'}
+                                size={'large'}
+                                fullWidth
+                                onClick={()=> window.scroll(0, 1000)}
+                            >
+                                NIVEL 4
+                            </Button>
+                        </NavLink>
                         }
                     </CardContent>
                 </Card>

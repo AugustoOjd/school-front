@@ -63,12 +63,12 @@ const DetailsCardTask:FC<Props> = ({
                     display={'flex'}
                     justifyContent={'space-between'}
                     alignItems={'center'}
-                    height={'15%'}
+                    height={'10%'}
                     width={'100%'}
                     >
                     <Box
                         bgcolor={'secondary.dark'}
-                        p={1}
+                        p={0.7}
                         borderRadius={2}
                         boxShadow={2}
                         width={'30%'}
@@ -92,17 +92,27 @@ const DetailsCardTask:FC<Props> = ({
                     </NavLink>
                 </Box>
                 <Card
-                    sx={{display: 'flex', height: '85%', width: '100%', flexDirection: {xs: 'column', sm: 'row'}}}
+                    sx={{
+                        display: 'flex', 
+                        height: '90%', 
+                        width: '100%', 
+                        flexDirection: {xs: 'column', sm: 'row'},
+                        backgroundColor: 'primary.light'
+                    }}
                 >
                             <CardMedia
                               component="img"
-                              sx={{ width: { xs: '100%', sm: '60%'}, height: {xs: '50%', sm: '100%'}, objectFit: 'fill' }}
+                              sx={{ width: { xs: '100%', sm: '60%'}, 
+                              height: {xs: '50%', sm: '100%'}, 
+                              objectFit: 'fill' }}
                               image={img}
                               alt={img}
                             />
     
-                        <CardContent sx={{ width: { xs: 'auto', sm: 'auto'}, height: {xs: 'auto', sm: 'auto'} }}>
-                            
+                        <CardContent sx={{ 
+                            width: { xs: 'auto', sm: '100%'}, 
+                            height: {xs: 'auto', sm: 'auto'} 
+                            }}>
                             <Stack
                                 width={'100%'}
                                 height={'100%'}
@@ -110,14 +120,21 @@ const DetailsCardTask:FC<Props> = ({
                                 spacing={2}
                                 >
                                 <Box
-                                    width={'100%'}
-                                    height={'50%'}
-                                    bgcolor='red'
+                                    width={'auto'}
+                                    height={'auto'}
+                                    bgcolor={'secondary.dark'}
+                                    p={1}
+                                    display={'flex'}
+                                    justifyContent={'center'}
+                                    alignItems={'center'}
+                                    borderRadius={1}
                                 >
                                     <Typography
                                         textAlign={'center'}
+                                        color={'white'}
+                                        fontSize={{xs: '16px', md: '20px'}}
                                         >
-                                          {question}
+                                            {question}
                                         </Typography>
                                 </Box>
                                 <Stack
