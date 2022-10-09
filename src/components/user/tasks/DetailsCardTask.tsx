@@ -5,12 +5,12 @@ import { Box, Button, Card, CardContent, CardMedia, Stack, Typography } from '@m
 // Redux
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../context'
-import { returnDashboard } from '../../../utils/returnDashboard'
 import { NavLink } from 'react-router-dom'
 
 
 interface Props {
-    nivel?:       string,
+    error?:      number,
+    nivel?:      string,
     img?:        string,
     question?:   string,
     option1?:    string, 
@@ -26,6 +26,7 @@ interface Props {
 // 
 
 const DetailsCardTask:FC<Props> = ({
+        error,
         nivel,
         img, 
         question, 
@@ -41,6 +42,7 @@ const DetailsCardTask:FC<Props> = ({
 
     const session = useSelector((state: RootState) => state.SessionUser.value)
     const _id = session.map(e=> e.id)
+
 
   return (
     <>
@@ -100,18 +102,20 @@ const DetailsCardTask:FC<Props> = ({
                         backgroundColor: 'primary.light'
                     }}
                 >
-                            <CardMedia
-                              component="img"
-                              sx={{ width: { xs: '100%', sm: '60%'}, 
-                              height: {xs: '50%', sm: '100%'}, 
-                              objectFit: 'fill' }}
-                              image={img}
-                              alt={img}
-                            />
+                        <CardMedia
+                          component="img"
+                          sx={{ 
+                            width: { xs: '100%', sm: '60%'}, 
+                            height: {xs: '50%', sm: '100%'}, 
+                            objectFit: 'fill' }}
+                            image={img}
+                            alt={img}
+                            
+                        />
     
                         <CardContent sx={{ 
-                            width: { xs: 'auto', sm: '100%'}, 
-                            height: {xs: 'auto', sm: 'auto'} 
+                            width: { xs: 'auto', sm: '40%'}, 
+                            height: {xs: 'auto', sm: '100%'} 
                             }}>
                             <Stack
                                 width={'100%'}
@@ -121,7 +125,7 @@ const DetailsCardTask:FC<Props> = ({
                                 >
                                 <Box
                                     width={'auto'}
-                                    height={'auto'}
+                                    height={'30%'}
                                     bgcolor={'secondary.dark'}
                                     p={1}
                                     display={'flex'}
@@ -140,11 +144,14 @@ const DetailsCardTask:FC<Props> = ({
                                 <Stack
                                     direction={'column'}
                                     spacing={{xs: 1, sm: 2}}
+                                    width={'auto'}
+                                    height={'70%'}
                                 >
                                       <Button
                                           variant='contained'
                                           size='small'
                                           onClick={()=> event1()}
+                                          color={error === 0 ? 'error' : 'primary'}
                                           >
                                           {option1}
                                       </Button> 
@@ -152,6 +159,7 @@ const DetailsCardTask:FC<Props> = ({
                                           variant='contained'
                                           size='small'
                                           onClick={()=> event2()}
+                                          color={error === 0 ? 'error' : 'primary'}
                                       >
                                           {option2}
                                       </Button>
@@ -160,6 +168,7 @@ const DetailsCardTask:FC<Props> = ({
                                           variant='contained'
                                           size='small'
                                           onClick={()=> event3()}
+                                          color={error === 0 ? 'error' : 'primary'}
                                       >
                                           {option3}
                                       </Button> 
@@ -167,6 +176,7 @@ const DetailsCardTask:FC<Props> = ({
                                           variant='contained'
                                           size='small'
                                           onClick={()=> event4()}
+                                          color={error === 0 ? 'error' : 'primary'}
                                       >
                                           {option4}
                                       </Button>  

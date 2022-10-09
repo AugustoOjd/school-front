@@ -15,6 +15,7 @@ const CardTask = () => {
   const [page, setPage] = useState(1)
   const [resultado, setResultado] = useState(0)
   const [parametro, setParametro] = useState([{}])
+  const [error, setError] = useState(5)
 
   const { nivel } = useParams()
 
@@ -46,13 +47,23 @@ const CardTask = () => {
 
   const handlerPuntos = async (valor: number) =>{
     
-
     if(page === 11){
       
       return setPage(page)
     }
-    setPage(page + 1)
-    setResultado( resultado + valor)
+
+    if(valor === 10){
+      setError(10)
+    }if(valor === 0){
+      setError(0)
+    }
+
+    setTimeout(() => {
+      setError(5)
+      setPage(page + 1)
+      setResultado( resultado + valor)
+    }, 1000);
+
 
   }
 
@@ -69,13 +80,14 @@ const CardTask = () => {
             <DetailsCardTask
               nivel={nivel?.toUpperCase()}
               img={card?.img}
+              error={error}
               question={card?.pregunta}
               option1={card?.opciones[0].a.op}
               option2={card?.opciones[0].b.op} 
               option3={card?.opciones[0].c.op}
               option4={card?.opciones[0].d.op}
 
-              event1={()=> handlerPuntos(card!.opciones[0].a.value)}
+              event1={ ()=> handlerPuntos(card!.opciones[0].a.value)}
               event2={ ()=> handlerPuntos(card!.opciones[0].b.value)}
               event3={ ()=> handlerPuntos(card!.opciones[0].c.value)}
               event4={ ()=> handlerPuntos(card!.opciones[0].d.value)}

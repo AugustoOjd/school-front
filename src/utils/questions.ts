@@ -715,230 +715,230 @@ export const data = [
         
             {
               id: 1,
-              img: "https://static.nationalgeographicla.com/files/styles/image_3200/public/germany-surrenders-wwii-og_0.jpg?w=1600",
-              pregunta: '¿Cuándo acabó la II Guerra Mundial??',
+              img: "https://concepto.de/wp-content/uploads/2014/08/quimica-1-e1589576962905.jpg",
+              pregunta: '¿Cuántos elementos hay en la Tabla Periódica?',
               opciones: [ {
                   a: {
-                      op: '1963',
+                      op: '120',
                       value: 0
                   },
                   b: {
-                      op: '1950',
+                      op: '75',
                       value: 0
                   },
                   c: {
-                      op: '1945',
-                      value: 10
+                      op: '90',
+                      value: 0
                   },
                   d: {
-                      op: '1939',
-                      value: 0
+                      op: '118',
+                      value: 10
                   },
               }] 
             },
             {
               id: 2,
-              img: "https://www.catorce6.com/images/noticias/breves/Superficie_terrestre_planeta.jpg",
-              pregunta: 'Cuantos paises tiene continente americano?',
+              img: "https://static.nationalgeographicla.com/files/styles/image_3200/public/01-edge-of-space-sts080-759-038_orig.jpg?w=1900&h=1900",
+              pregunta: '¿Que se humano viajó al espacio por primer vez?',
               opciones: [ {
                   a: {
-                      op: '39',
-                      value: 0
+                      op: 'Yuri Gagarin',
+                      value: 10
                   },
                   b: {
-                      op: '27',
+                      op: 'Oleg Artemyev',
                       value: 0
                   },
                   c: {
-                      op: '22',
+                      op: 'Neil Armstrong',
                       value: 0
                   },
                   d: {
-                      op: '35',
-                      value: 10
+                      op: 'Michael Collins',
+                      value: 0
                   },
               }] 
             },
             {
               id: 3,
-              img: "https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/hc_480x270/public/media/image/2022/03/star-wars-episodio-iv-nueva-esperanza-2659625.jpg?itok=EO7Qhqqj",
-              pregunta: 'Cuando se entreno la primera pelicula de star wars?',
+              img: "https://www.museoandaluzdelaeducacion.es/wp-content/uploads/2018/01/MARIECURIE.jpg",
+              pregunta: '¿Qué descubrieron Marie Curie y su esposo Pierre?',
               opciones: [ {
                   a: {
-                      op: '1977',
-                      value: 10
+                      op: 'La Alergia',
+                      value: 0
                   },
                   b: {
-                      op: '1980',
+                      op: 'El VIH',
                       value: 0
                   },
                   c: {
-                      op: '1973',
-                      value: 0
+                      op: 'La radioactividad',
+                      value: 10
                   },
                   d: {
-                      op: '1985',
+                      op: 'La rabia',
                       value: 0
                   },
               }] 
             },
             {
                 id: 4,
-                img: "https://upload.wikimedia.org/wikipedia/commons/e/e7/Steaua_vs._CFR_Cluj_in_2010.jpg",
-                pregunta: '¿Quién es el máximo goleador de la historia del fútbol?',
+                img: "https://economipedia.com/wp-content/uploads/Tasa-de-mortalidad.jpg",
+                pregunta: '¿Que provoca más muertes por año?',
                 opciones: [ {
                     a: {
-                        op: 'Diego Marado',
+                        op: 'COVID',
                         value: 0
                     },
                     b: {
-                        op: 'Lionel Messi',
+                        op: 'Accidentes de trafico',
                         value: 0
                     },
                     c: {
-                        op: 'Romario ',
-                        value: 0
+                        op: 'Isquemia de corazon',
+                        value: 10
                     },
                     d: {
-                        op: 'C. Ronaldo',
-                        value: 10
+                        op: 'Cancer',
+                        value: 0
                     },
                 }] 
               },
               {
                 id: 5,
-                img: "https://www.visitdubai.com/-/media/gathercontent/poi/b/burj-khalifa/fallback-image/det-burj-khalifa.jpg",
-                pregunta: '¿En qué país se encuentra el rascacielos más alto del mundo?',
+                img: "https://acasesores.co/es/wp-content/uploads/2022/01/3112677-700x700.jpg",
+                pregunta: '¿Que es la inflación?',
                 opciones: [ {
                     a: {
-                        op: 'USA',
+                        op: 'Especulacion',
                         value: 0
                     },
                     b: {
-                        op: 'China',
+                        op: 'Subida de precios',
                         value: 0
                     },
                     c: {
-                        op: 'Alemnania',
-                        value: 0
+                        op: 'Fenomeno monetario',
+                        value: 10
                     },
                     d: {
-                        op: 'Dubai',
-                        value: 10
+                        op: 'Fenomeno multicausal',
+                        value: 0
                     },
                 }] 
               },
               {
                 id: 6,
-                img: "https://4.bp.blogspot.com/-_cZ370YUtuk/WNtH0iKDoNI/AAAAAAAARQs/SO4C90mlqxIHQMLqtox9fLwXdOwVHtZBQCEw/w1200-h630-p-k-no-nu/propiedades%2Bde%2Blos%2Bmetales.jpg",
-                pregunta: '¿Cuál fue el primer metal que empleó el hombre?',
+                img: "http://www.innovabc.pe/wp-content/uploads/2017/12/img_3652.jpg",
+                pregunta: '¿Cuál fue la primera civilización humana?',
                 opciones: [ {
                     a: {
-                        op: 'Cobre',
-                        value: 10
-                    },
-                    b: {
-                        op: 'Alumnio',
+                        op: 'Egipcios',
                         value: 0
                     },
+                    b: {
+                        op: 'Sumerios',
+                        value: 10
+                    },
                     c: {
-                        op: 'Hierro',
+                        op: 'Griegos',
                         value: 0
                     },
                     d: {
-                        op: 'Oro',
+                        op: 'Romanos',
                         value: 0
                     },
                 }] 
               },
               {
                 id: 7,
-                img: "https://www.webconsultas.com/sites/default/files/styles/wch_image_schema/public/temas/cafe.jpg",
-                pregunta: '¿De qué país es originario el café?',
+                img: "https://s1.eestatic.com/2019/06/19/series/cine/cine_clasico-judy_garland-peliculas_407471219_125951506_1024x576.jpg",
+                pregunta: '¿En qué ciudad vive el mago de Oz?',
                 opciones: [ {
                     a: {
-                        op: 'Colombia',
+                        op: 'Ciudad Zafiro',
                         value: 0
                     },
                     b: {
-                        op: 'India',
+                        op: 'Ciudad Perla',
                         value: 0
                     },
                     c: {
-                        op: 'Etiopia',
-                        value: 10
+                        op: 'Ciudad Dorada',
+                        value: 0
                     },
                     d: {
-                        op: 'Taiwan',
-                        value: 0
+                        op: 'Ciudad Esmeralda',
+                        value: 10
                     },
                 }] 
               },
               {
                 id: 8,
-                img: "https://www.unidiversidad.com.ar/cache/consolas-de-videojuegos-ilustrativa_1000_1100.jpg",
-                pregunta: '¿Cuál es la videoconsola más vendida de la historia?',
+                img: "https://elordenmundial.com/wp-content/uploads/2020/10/NBA-logo-baloncesto-historia-deporte-estados-unidos.jpg",
+                pregunta: '¿Cuál es el equipo de la NBA con más títulos?',
                 opciones: [ {
                     a: {
-                        op: 'Nintendo 64',
+                        op: 'Angeles Lakers',
                         value: 0
                     },
                     b: {
-                        op: 'Xbox One',
+                        op: 'chicago bulls',
                         value: 0
                     },
                     c: {
-                        op: 'PlayStation 2',
+                        op: 'Boston Celtics',
                         value: 10
                     },
                     d: {
-                        op: 'Gameboy',
+                        op: 'Detroit Pistons',
                         value: 0
                     },
                 }] 
               },
               {
                 id: 9,
-                img: "https://as01.epimg.net/meristation/imagenes/2021/10/06/noticias/1633514535_199538_1633514571_noticia_normal.jpg",
-                pregunta: '¿Quién es el enemigo más famoso de Batman?',
+                img: "https://www.infobae.com/new-resizer/e8iJ_HxZ7u9SAqd9sEbLDHjrxU0=/1200x900/filters:format(webp):quality(85)//s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2019/01/16145935/Tint%C3%ADn-Hergu%C3%A9-Portada.jpg",
+                pregunta: '¿Cómo se llama el perro de Tintín?',
                 opciones: [ {
                     a: {
-                        op: 'Catwoman',
+                        op: 'Lulu',
                         value: 0
                     },
                     b: {
-                        op: 'Joker',
+                        op: 'Milu',
                         value: 10
                     },
                     c: {
-                        op: 'Two Face',
+                        op: 'Mike',
                         value: 0
                     },
                     d: {
-                        op: 'Lex Luthor',
+                        op: 'Robert',
                         value: 0
                     },
                 }] 
               },
               {
                 id: 10,
-                img: "https://www.geoenciclopedia.com/wp-content/uploads/2015/08/Galaxias.jpg",
-                pregunta: '¿Cuál es la galaxia más cercana a la nuestra?',
+                img: "https://www.trecebits.com/wp-content/uploads/2019/04/11854.jpg",
+                pregunta: '¿Cuál es el videojuego más vendido de la historia?',
                 opciones: [ {
                     a: {
-                        op: 'Via lactea',
-                        value: 0
-                    },
-                    b: {
-                        op: 'Andromeda',
+                        op: 'Minecraft',
                         value: 10
                     },
+                    b: {
+                        op: 'Mario Bros',
+                        value: 0
+                    },
                     c: {
-                        op: 'Centaurus A',
+                        op: 'Dark souls',
                         value: 0
                     },
                     d: {
-                        op: 'Dwingeloo',
+                        op: 'World of Warcraft',
                         value: 0
                     },
                 }] 
