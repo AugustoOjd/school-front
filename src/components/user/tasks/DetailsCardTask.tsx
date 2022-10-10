@@ -179,7 +179,16 @@ const DetailsCardTask:FC<Props> = ({
                                           color={error === 0 ? 'error' : 'primary'}
                                       >
                                           {option4}
-                                      </Button>  
+                                      </Button>
+                                      <Box>
+                                        <Typography
+                                          textAlign={'center'}
+                                          color={'green'}
+                                          fontSize={'18px'}
+                                        >
+                                              {error === 10 ? 'Correcto! + 10' : ''}
+                                        </Typography>
+                                      </Box>    
                                 </Stack>
 
                             </Stack>

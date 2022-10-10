@@ -71,7 +71,7 @@ const CardTask = () => {
     <>
         <Box
             bgcolor={'primary.light'}
-            height={{xs: '700px', sm: '500px', lg: '600px'}}
+            height={{xs: '850px', sm: '550px', lg: '600px'}}
             width={'100%'}
         >
           {
