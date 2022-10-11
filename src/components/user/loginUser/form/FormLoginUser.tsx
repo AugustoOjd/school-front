@@ -16,9 +16,6 @@ import { instance } from '../../../../api/axiosApi';
 
 
 
-const loginURL = 'http://localhost:8080/api/login'
-
-
 const FormLoginUser = () => {
 
     const [statusOk, setStatusOk] = useState(false)

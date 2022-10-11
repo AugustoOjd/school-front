@@ -1,7 +1,27 @@
 import { Box, Typography } from '@mui/material'
-import React from 'react'
+import React, {useEffect} from 'react'
+import { instance } from '../../../api/axiosApi'
 
 const BaseStatus = () => {
+
+  useEffect(() => {
+
+    instance.get('/admin/dashboard')
+    .then((res) => {
+      // handle success
+      console.log(res.data);
+
+
+    })
+    .catch((error)=> {
+      
+      // handle error
+      console.log(error);
+    })
+
+  }, [])
+  
+
   return (
     <>
         <Box

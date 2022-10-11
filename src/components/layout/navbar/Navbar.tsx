@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { Box, Typography, Button, AppBar, Stack, Avatar } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import MonetizationOnOutlinedIcon from '@mui/icons-material/MonetizationOnOutlined';
+import { blue, pink, orange } from '@mui/material/colors';
 
 import Cookies from 'js-cookie';
 import { useCookies } from 'react-cookie'
@@ -13,11 +14,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import type { RootState } from '../../../context';
 import { isLogout } from '../../../context/reduces/authLoginUser';
 import { logoutSession } from '../../../context/reduces/authSessionUser';
-import { blue, pink, orange } from '@mui/material/colors';
+
 
 const Navbar = () => {
 
-  const [cookies, setCookie] = useCookies(['token']);
+  // const [cookies, setCookie] = useCookies(['token']);
 
   const login = useSelector((state: RootState)=> state.validLogin.value)
   const session = useSelector((state: RootState)=> state.SessionUser.value)
@@ -27,7 +28,8 @@ const Navbar = () => {
 
     dispatch(logoutSession())
     dispatch(isLogout())
-    setCookie('token', null)
+    Cookies.remove('token')
+    Cookies.remove('user')
     window.scrollTo( 0, 0)
   }
 

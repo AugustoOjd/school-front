@@ -3,30 +3,56 @@ import { Box, Button, Stack, TextField, Typography } from '@mui/material'
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ILogin } from '../../../../interface/login';
 import { isEmail } from '../../../../utils/valitations';
-import axios from 'axios';
 
 
-const loginAdminURL = 'http://localhost:8080/api/admin'
+import { instance } from '../../../../api/axiosApi';
+import { useNavigate } from 'react-router-dom';
+
+// Redux
+import { useDispatch } from 'react-redux';
+import { authSessionA } from '../../../../context/reduces/authSessionAdmin';
+import Cookies from 'js-cookie';
+
 
 const FormLoginAdmin = () => {
 
     const [statusOk, setStatusOk] = useState(false)
     const [statusError, setStatusError] = useState(false)
 
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     // Evento de hook form mas post con axios
     const { register, handleSubmit, formState: {errors} } = useForm<ILogin>();
-    const onSubmit: SubmitHandler<ILogin> = async (data) => axios.post(loginAdminURL, await {
+    const onSubmit: SubmitHandler<ILogin> = async (data) => instance.post('/admin', await {
         email:      data.email,
         password:   data.password
       })
-      .then(function (response) {
-        console.log(response.data);
+      .then((res) => {
+        // console.log(res.data);
         setStatusOk(true)
+
+        const { admin, token} = res.data 
+
+        Cookies.set('token', token)
+        Cookies.set('admin', admin)
+
+        const estado = dispatch(authSessionA(admin))
+
+        console.log(estado)
+
+        if(!estado){
+            return navigate('/')
+        }
+
+        if(estado){
+            navigate(`/admin/${admin.id}`)
+        }
+
 
         // TODO: SI TODO DA OK, MANDAR AL USUARIO A SU DASHBOARD CON EL TOKEN EN LA COOKIE
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error);
         setStatusError(true)
         // TODO: FALTA MANDARLE LOS ERRORES DE FORM AL USUARIO PARA QUE PUEDA CORREGIRLOS
