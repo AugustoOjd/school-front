@@ -24,7 +24,7 @@ const FormLoginUser = () => {
     const [statusOk, setStatusOk] = useState(false)
     const [statusError, setStatusError] = useState(false)
 
-    const [cookies, setCookie] = useCookies(['token']);
+    const [cookies, setCookie] = useCookies(['token', 'user']);
 
     const dispatch = useDispatch()
     const session = useSelector((state: RootState)=> state.SessionUser.value)
@@ -48,6 +48,7 @@ const FormLoginUser = () => {
                 const { student, token } = res.data
 
                 setCookie('token', token);
+                setCookie('user', student);
 
                 // console.log(student, token)
 
