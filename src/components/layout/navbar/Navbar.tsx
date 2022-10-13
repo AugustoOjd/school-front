@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import { Box, Typography, Button, AppBar, Stack, Avatar } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
@@ -24,12 +24,15 @@ const Navbar = () => {
   const session = useSelector((state: RootState)=> state.SessionUser.value)
   const dispatch = useDispatch()
 
+  const navigate = useNavigate()
+
   const cerrarCession = ()=>{
 
     dispatch(logoutSession())
     dispatch(isLogout())
     Cookies.remove('token')
     Cookies.remove('user')
+    navigate('/')
     window.scrollTo( 0, 0)
   }
 
@@ -124,7 +127,6 @@ const Navbar = () => {
                           ))
                         }
                     </Box>
-                    <NavLink to={'/'}>
                       <Button
                       size={'small'}
                       variant='contained' 
@@ -132,7 +134,6 @@ const Navbar = () => {
                       onClick={cerrarCession}
                       > Logout
                       </Button>
-                    </NavLink>
                     </>
                     :
                     <>

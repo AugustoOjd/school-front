@@ -1,7 +1,7 @@
 import { AppBar, Box, Typography, Stack, Button } from '@mui/material'
 import { orange } from '@mui/material/colors';
 import React from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,12 +14,14 @@ const NavbarAdmin = () => {
   const sessionA = useSelector((state: RootState) => state.SessionAdmin.value)
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
 
   const cerrarCession = () =>{
       dispatch(logoutSessionA())
       Cookies.remove('token')
       Cookies.remove('admin')
+      navigate('/')
       window.scrollTo( 0, 0)
   }
 
@@ -94,7 +96,6 @@ const NavbarAdmin = () => {
                     justifyContent={'center'}
                     alignItems={'center'}
                 >
-                  <NavLink to={'/'}>
                     <Button 
                       variant='contained'
                       size='small'
@@ -103,7 +104,6 @@ const NavbarAdmin = () => {
                       > 
                         Logout 
                     </Button>
-                  </NavLink>
                 </Box>
               </Stack>
             </Box>

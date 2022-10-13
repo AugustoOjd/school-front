@@ -39,7 +39,7 @@ const FormLoginAdmin = () => {
 
         const estado = dispatch(authSessionA(admin))
 
-        console.log(estado)
+        // console.log(estado)
 
         if(!estado){
             return navigate('/')
