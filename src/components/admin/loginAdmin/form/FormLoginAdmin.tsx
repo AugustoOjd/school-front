@@ -35,7 +35,7 @@ const FormLoginAdmin = () => {
         const { admin, token} = res.data 
 
         Cookies.set('token', token)
-        Cookies.set('admin', admin)
+        Cookies.set('admin', JSON.stringify(admin))
 
         const estado = dispatch(authSessionA(admin))
 

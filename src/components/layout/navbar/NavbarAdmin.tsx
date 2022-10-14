@@ -1,21 +1,40 @@
 import { AppBar, Box, Typography, Stack, Button } from '@mui/material'
 import { orange } from '@mui/material/colors';
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { NavLink, useNavigate } from 'react-router-dom';
 
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../context/store/store';
-import { logoutSessionA } from '../../../context/reduces/authSessionAdmin';
+import { authSessionA, logoutSessionA } from '../../../context/reduces/authSessionAdmin';
 import Cookies from 'js-cookie';
 
 const NavbarAdmin = () => {
 
+  const [loading, setLoading] = useState(true)
   const sessionA = useSelector((state: RootState) => state.SessionAdmin.value)
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+
+  useEffect(() => {
+    const admin = Cookies.get('admin')
+      
+    const data = JSON.parse(admin!)
+    console.log(data)
+
+    if(sessionA.length <= 0){
+      dispatch(logoutSessionA())
+      dispatch(authSessionA(data))
+      setLoading(false)
+    }
+    
+    
+    console.log(sessionA)
+    setLoading(false)
+  }, [sessionA])
+  
 
   const cerrarCession = () =>{
       dispatch(logoutSessionA())
@@ -79,16 +98,25 @@ const NavbarAdmin = () => {
                   p={1}
                 >
                   {
-                  sessionA.map((n:any)=> (
-                  <Typography
-                    key={n.id}
-                    color={'primary.light'}
-                    fontSize={{xs: '11px', sm: '14px', md: '16px'}}
-                    >
-                    {n.name.toUpperCase() + ' ' + n.lastName.toUpperCase()}
-                  </Typography>
+                    loading
+                    ?
+                      <Typography
+                        color={'primary.light'}
+                        fontSize={{xs: '11px', sm: '14px', md: '16px'}}
+                        >
+                      Nombre
+                      </Typography>
+                  :
+                    sessionA.map((n:any)=> (
+                    <Typography
+                      key={n.id}
+                      color={'primary.light'}
+                      fontSize={{xs: '11px', sm: '14px', md: '16px'}}
+                      >
+                      {n.name.toUpperCase() + ' ' + n.lastName.toUpperCase()}
+                    </Typography>
 
-                  ))}
+                    ))}
                 </Box>
 
                 <Box

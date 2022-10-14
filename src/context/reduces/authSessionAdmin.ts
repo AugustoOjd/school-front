@@ -13,11 +13,12 @@ import { RootState } from '../store/store'
 
 
   type Data = {
-    name: string,
-    email: string,
-    lastName: string,
-    state: boolean,
-    point: number
+    id:         string
+    name:       string,
+    email:      string,
+    lastName:   string,
+    state:      boolean,
+    point:      number
   }
 
 export const authSessionAdmin = createSlice({
