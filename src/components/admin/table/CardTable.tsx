@@ -8,32 +8,47 @@ interface Props {
   children: React.ReactNode
 }
 
-const columns:GridColDef[] = [
-  { field: 'id',        headerName: 'id', minWidth: 10 },
-  { field: 'name',      headerName: 'nombre', minWidth: 30 },
-  { field: 'lastName',  headerName: 'apellido', minWidth: 30 },
-  { field: 'country',   headerName: 'country', minWidth: 30 },
-  { field: 'point',     headerName: 'point', minWidth: 40 },
-  { field: 'state',     headerName: 'state', minWidth: 30,
-    renderCell: (params: GridRenderCellParams):React.ReactNode=>(
-        <Button
-          color='primary'
-        >
-          asd
-        </Button>
-
-    )
-    }
-];
-
 interface Data {
-  id:           number,
+  nro:          number,
   name:         string;
   lastName:     string;
   country:      string;
   point:        number;
   state:        boolean;
+  id:           string
 }
+
+const columns:GridColDef[] = [
+  { field: 'nro',       headerName: 'Nro', minWidth: 10 },
+  { field: 'name',      headerName: 'Nombre', minWidth: 30 },
+  { field: 'lastName',  headerName: 'Apellido', minWidth: 30 },
+  { field: 'country',   headerName: 'Pais', minWidth: 30 },
+  { field: 'point',     headerName: 'Puntos', minWidth: 40 },
+  { field: 'state',     headerName: 'state', minWidth: 30,
+    renderCell: ({row}: GridRenderCellParams):React.ReactNode=>(
+        <Button
+          color={row.state === true ? 'primary' : 'error'}
+          variant='contained'
+          onClick={()=> changeState(row.id, row.state)}
+        >
+          {row.state === true ? 'true' : 'false'}
+        </Button>
+
+    )
+    },
+    { field: 'id',   headerName: 'Id', minWidth: 40 },
+];
+
+
+const changeState = (id: string, state: boolean)=>{
+
+  console.log( id + state)
+  return {
+    id,
+    state
+  }
+}
+
 
 const CardTable = () => {
 
@@ -49,12 +64,13 @@ const CardTable = () => {
 
       const data = res.data
       const rows = data!.map(((user:Data, index:number)=>({
-        id: index,
-        name:     user.name,
-        lastName: user.lastName,
-        country:  user.country,
+        nro: index,
+        name:     user.name.charAt(0).toLocaleUpperCase() + user.name.slice(1),
+        lastName: user.lastName.charAt(0).toLocaleUpperCase() + user.lastName.slice(1),
+        country:  user.country.charAt(0).toLocaleUpperCase() + user.country.slice(1),
         point:    user.point,
         state:    user.state,
+        id:       user.id
       }))
     )
       setUsers(rows)
