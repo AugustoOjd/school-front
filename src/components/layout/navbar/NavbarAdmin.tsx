@@ -22,7 +22,7 @@ const NavbarAdmin = () => {
     const admin = Cookies.get('admin')
       
     const data = JSON.parse(admin!)
-    console.log(data)
+    // console.log(data)
 
     if(sessionA.length <= 0){
       dispatch(logoutSessionA())
@@ -31,7 +31,7 @@ const NavbarAdmin = () => {
     }
     
     
-    console.log(sessionA)
+    // console.log(sessionA)
     setLoading(false)
   }, [sessionA])
   

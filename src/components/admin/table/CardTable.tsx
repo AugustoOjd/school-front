@@ -20,9 +20,9 @@ interface Data {
 
 const columns:GridColDef[] = [
   { field: 'nro',       headerName: 'Nro', minWidth: 10 },
-  { field: 'name',      headerName: 'Nombre', minWidth: 30 },
-  { field: 'lastName',  headerName: 'Apellido', minWidth: 30 },
-  { field: 'country',   headerName: 'Pais', minWidth: 30 },
+  { field: 'name',      headerName: 'Nombre', minWidth: 120 },
+  { field: 'lastName',  headerName: 'Apellido', minWidth: 120 },
+  { field: 'country',   headerName: 'Pais', minWidth: 120 },
   { field: 'point',     headerName: 'Puntos', minWidth: 40 },
   { field: 'state',     headerName: 'state', minWidth: 30,
     renderCell: ({row}: GridRenderCellParams):React.ReactNode=>(
@@ -36,7 +36,7 @@ const columns:GridColDef[] = [
 
     )
     },
-    { field: 'id',   headerName: 'Id', minWidth: 40 },
+    { field: 'id',   headerName: 'Id', minWidth: 200 },
 ];
 
 
@@ -92,7 +92,7 @@ const CardTable = () => {
             width={'90%'}
             height={'90%'}
             bgcolor={'white'}
-            borderRadius={2}
+            borderRadius={1}
             boxShadow={2}
         >
           {
@@ -112,7 +112,7 @@ const CardTable = () => {
               rows={users!}
               columns={columns}
               pageSize={5}
-              rowsPerPageOptions={[5]}
+              // rowsPerPageOptions={[5, 10, 100]}
           />
             
             }

@@ -19,7 +19,7 @@ const CardStatus:FC<Props> = ({activos, inactivos}) => {
             <Stack
                 bgcolor={'white'}
                 direction={'column'}
-                borderRadius={2}
+                borderRadius={1}
                 boxShadow={1}
                 spacing={1}
                 p={1}
