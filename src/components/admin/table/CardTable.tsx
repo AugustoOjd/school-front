@@ -2,11 +2,10 @@ import React, {useEffect, useState, FC} from 'react'
 import { Box, Button, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography } from '@mui/material'
 import { DataGrid, GridColDef, GridValueGetterParams, GridRenderCellParams} from '@mui/x-data-grid';
 import { instance } from '../../../api/axiosApi';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../context/store/store';
+import { useParams } from 'react-router-dom';
 
-
-interface Props {
-  children: React.ReactNode
-}
 
 interface Data {
   nro:          number,
@@ -18,42 +17,59 @@ interface Data {
   id:           string
 }
 
-const columns:GridColDef[] = [
-  { field: 'nro',       headerName: 'Nro', minWidth: 10 },
-  { field: 'name',      headerName: 'Nombre', minWidth: 120 },
-  { field: 'lastName',  headerName: 'Apellido', minWidth: 120 },
-  { field: 'country',   headerName: 'Pais', minWidth: 120 },
-  { field: 'point',     headerName: 'Puntos', minWidth: 40 },
-  { field: 'state',     headerName: 'state', minWidth: 30,
-    renderCell: ({row}: GridRenderCellParams):React.ReactNode=>(
-        <Button
-          color={row.state === true ? 'primary' : 'error'}
-          variant='contained'
-          onClick={()=> changeState(row.id, row.state)}
-        >
-          {row.state === true ? 'true' : 'false'}
-        </Button>
 
-    )
-    },
-    { field: 'id',   headerName: 'Id', minWidth: 200 },
-];
-
-
-const changeState = (id: string, state: boolean)=>{
-
-  console.log( id + state)
-  return {
-    id,
-    state
-  }
-}
 
 
 const CardTable = () => {
 
   const [loading, setLoading] = useState(true)
   const [users, setUsers] = useState()
+  const [estado, setEstado] = useState(0)
+
+  // const admin = useSelector((state: RootState)=> state.SessionAdmin.value)
+
+  // const adminId = admin[0].id || 0
+
+  const { adminId } = useParams()
+
+  const columns:GridColDef[] = [
+    { field: 'nro',       headerName: 'Nro', minWidth: 10 },
+    { field: 'name',      headerName: 'Nombre', minWidth: 120 },
+    { field: 'lastName',  headerName: 'Apellido', minWidth: 120 },
+    { field: 'country',   headerName: 'Pais', minWidth: 120 },
+    { field: 'point',     headerName: 'Puntos', minWidth: 40 },
+    { field: 'state',     headerName: 'State', minWidth: 30,
+      renderCell: ({row}: GridRenderCellParams):React.ReactNode=>(
+          <Button
+            color={row.state === true ? 'primary' : 'error'}
+            variant='contained'
+            onClick={()=> changeState(row.id, row.state)}
+          >
+            {row.state === true ? 'true' : 'false'}
+          </Button>
+  
+      )
+      },
+      { field: 'id',   headerName: 'Id', minWidth: 200 },
+  ];
+
+
+  // funcion que cambia el estado y manda un post
+  const changeState = async (id: string, state: boolean)=>{
+
+    instance.put(`/admin/dashboard/${adminId}`, await {
+      id:     id,
+      state:  !state
+    })
+      .then((res)=>{
+        setEstado(estado + 1)
+        // console.log(res)
+      })
+      .catch((error)=>{
+        setEstado(estado)
+        // console.log(error)
+      })
+  }
 
   useEffect(() => {
 
@@ -79,17 +95,17 @@ const CardTable = () => {
     .catch((error)=> {
       
       // handle error
-      console.log(error);
+      // console.log(error);
       setLoading(true)
     })
 
 
-  }, [])
+  }, [estado, loading])
   
   return (
     <>
         <Box
-            width={'90%'}
+            width={{xs: '90%', md: '70%'}}
             height={'90%'}
             bgcolor={'white'}
             borderRadius={1}
@@ -107,15 +123,14 @@ const CardTable = () => {
               No se pudieron cargar los datos
             </Typography>
           </Box>
-          :            
-          <DataGrid 
-              rows={users!}
-              columns={columns}
-              pageSize={5}
-              // rowsPerPageOptions={[5, 10, 100]}
-          />
-            
-            }
+          :
+            <DataGrid 
+                rows={users!}
+                columns={columns}
+                pageSize={5}
+                rowsPerPageOptions={[5, 10, 100]}  
+            />
+          }
         </Box>
     </>
   )

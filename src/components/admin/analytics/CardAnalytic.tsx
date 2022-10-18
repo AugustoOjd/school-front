@@ -94,7 +94,7 @@ export const CardAnalytic= () => {
             cantidad:     venezuela || 0
           },
           )
-        console.log({paises})
+        // console.log({paises})
           
           
         setcountries(paises)
@@ -126,7 +126,7 @@ export const CardAnalytic= () => {
                 justifyContent={'center'}
                 alignItems={'center'}
                 bgcolor={'primary.light'}
-                width={'97%'}
+                width={'95%'}
                 height={'97%'}
                 borderRadius={1}
             >
@@ -166,9 +166,11 @@ export const CardAnalytic= () => {
                             </Box>
                         :
                             
-                            countries.map((c:any)=>(
+                            countries.map((c:any, index: number)=>(
 
-                                    <Grid item xs={12} sm={6} md={4}>
+                                    <Grid item xs={12} sm={6} md={4}
+                                      key={index.toString()}
+                                      >
                                         <Box
                                         bgcolor={'white'}
                                         display={'flex'}
@@ -177,8 +179,10 @@ export const CardAnalytic= () => {
                                         p={2}
                                         borderRadius={1}
                                         boxShadow={1}
+                                        
                                         >
-                                            <Avatar 
+                                            <Avatar
+
                                                 alt={c.nombre}
                                                 src={c.bandera} 
                                                 // sx={{ width: 56, height: 56 }}

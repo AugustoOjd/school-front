@@ -30,9 +30,11 @@ const TableRank = () => {
         .then((res) => {
           // handle success
           // console.log(res.data);
-          const orderUsers = (res.data).sort((a:any, b:any) => b.point - a.point)
-          const orderCompleted = orderUsers.slice(0, 5)
 
+          const filterState = res.data.filter((e: any)=> e.state === true)
+          const orderUsers = filterState.sort((a:any, b:any) => b.point - a.point)
+          const orderCompleted = orderUsers.slice(0, 5)
+          
             setUsers(orderCompleted)
             setLoading(false)
 
@@ -42,7 +44,7 @@ const TableRank = () => {
             setControlError(true)
           
           // handle error
-          // console.log(error);
+          console.log(error);
         })
       
     
@@ -160,7 +162,7 @@ const TableRank = () => {
                           fontSize={{xs: '18px', md: '20px'}}
                           color={'secondary.light'}
                           >
-                            {`${users![1].name.toUpperCase().slice(0,7)}: ${users![1].point}`}
+                            {`${users![1] ? users![1].name.toUpperCase().slice(0,7) : 'None'}: ${users![1] ? users![1].point : 0}`}
                         </Typography>
                         <Typography
                           fontSize={{xs: '18px', md: '20px'}}
@@ -181,7 +183,7 @@ const TableRank = () => {
                           fontSize={{xs: '18px', md: '20px'}}
                           color={'secondary.light'}
                           >
-                            {`${users![2].name.toUpperCase().slice(0,7)}: ${users![2].point}`}
+                            {`${users![2] ? users![2].name.toUpperCase().slice(0,7) : 'None'}: ${users![2] ? users![2].point : 0}`}
                         </Typography>
                         <Typography
                           fontSize={{xs: '18px', md: '20px'}}
@@ -202,7 +204,7 @@ const TableRank = () => {
                           fontSize={{xs: '18px', md: '20px'}}
                           color={'secondary.light'}
                           >
-                            {`${users![3].name.toUpperCase().slice(0,7)}: ${users![3].point}`}
+                            {`${users![3] ? users![3].name.toUpperCase().slice(0,7) : 'None '}: ${users![3] ? users![3].point : 0}`}
                         </Typography>
                       </Box>
                       <Divider/>
@@ -221,7 +223,7 @@ const TableRank = () => {
                           fontSize={{xs: '18px', md: '20px'}}
                           color={'secondary.light'}
                           >
-                            {`${users![4].name.toUpperCase().slice(0,7)}: ${users![4].point}`}
+                            {`${users![4] ? users![4].name.toUpperCase().slice(0,7) : 'None'}: ${ users![4] ? users![4].point : 0}`}
                         </Typography>
                       </Box>
                     </>

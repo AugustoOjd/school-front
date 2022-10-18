@@ -32,8 +32,6 @@ const BaseDashboardUser = () => {
         setLoading(false)
       }
       
-      
-      console.log(session)
       setLoading(false)
     }, [session])
 
