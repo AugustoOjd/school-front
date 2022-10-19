@@ -14,9 +14,8 @@ const BaseTasks = () => {
 
     const [user, setUser] = useState(0)
 
-    const data = session.map(e=> e.point)
+    const data = session.map(e=> e.nivel)
     const _id = session.map(e=> e.id)
-
 
     useEffect(() => {
         setUser(data[0])
@@ -76,7 +75,20 @@ const BaseTasks = () => {
                       alt="nivel 1"
                     />
                     <CardContent>
-                        <NavLink to={`/user/${_id[0]}/nivel1`}>
+                        {
+                            user > 1
+                            ?
+                            <Button
+                                variant='contained'
+                                color={'primary'}
+                                size={'large'}
+                                fullWidth 
+                                disabled
+                            >
+                                Completado
+                            </Button>
+                            :
+                            <NavLink to={`/user/${_id[0]}/nivel1`}>
                             <Button
                                 variant='contained'
                                 color={'primary'}
@@ -85,7 +97,7 @@ const BaseTasks = () => {
                             >
                                 Nivel 1
                             </Button>
-                        </NavLink>
+                        </NavLink>}
                     </CardContent>
                 </Card>
 
@@ -101,7 +113,7 @@ const BaseTasks = () => {
                     />
                     <CardContent>
                         {
-                        user < 20
+                        user < 2 || user > 2
                         ?
 
                         <Button
@@ -111,7 +123,7 @@ const BaseTasks = () => {
                             fullWidth
                             disabled
                         >
-                            Pocos puntos
+                            {user > 2 ? 'Completado' : 'Faltan puntos nv2'}
                         </Button>
                         
                         :
@@ -142,7 +154,7 @@ const BaseTasks = () => {
                     />
                     <CardContent>
                     {
-                        user < 20
+                        user < 3 || user > 3
                         ?
                         
                         <Button
@@ -152,7 +164,7 @@ const BaseTasks = () => {
                             fullWidth
                             disabled
                         >
-                            Pocos puntos
+                            {user > 3 ? 'Completado' : 'Faltan puntos nv3'}
                         </Button>
                         :
                         <NavLink to={`/user/${_id[0]}/nivel3`}>
@@ -182,7 +194,7 @@ const BaseTasks = () => {
                     />
                     <CardContent>
                     {
-                        user < 20
+                        user < 4 || user > 4
                         ?
                         <Button
                             variant='contained'
@@ -191,7 +203,7 @@ const BaseTasks = () => {
                             fullWidth
                             disabled
                         >
-                            Pocos puntos
+                            {user > 4 ? 'Completado' : 'Faltan puntos nv4'}
                         </Button>
                         :
                         <NavLink to={`/user/${_id[0]}/nivel4`}>

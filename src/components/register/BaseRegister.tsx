@@ -1,7 +1,6 @@
 import React from 'react'
-import { Box, Typography, Stack } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import Formulario from './Formulario'
-import FormLoginUser from '../user/loginUser/form/FormLoginUser';
 import Details from './Details';
 
 const BaseRegister = () => {

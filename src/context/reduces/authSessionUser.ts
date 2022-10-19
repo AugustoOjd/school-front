@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../store/store'
+import { Student } from '../../interface/student'
 
 
 export interface SessionState {
@@ -13,20 +14,13 @@ export interface SessionState {
   }
 
 
-  type Data = {
-    name: string,
-    email: string,
-    lastName: string,
-    role: string,
-    state: boolean,
-    point: number
-  }
+
 
 export const authSessionUser = createSlice({
     name: 'sessionUser',
     initialState,
     reducers: {
-        authSession: (state, action: PayloadAction<Data>) =>{
+        authSession: (state, action: PayloadAction<any>) =>{
             state.value.push(action.payload)
          },
         logoutSession: (state) =>{

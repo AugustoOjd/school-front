@@ -1,10 +1,13 @@
 import React, {FC} from 'react'
 import { Box, Typography, Stack, Button } from '@mui/material';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 // Redux
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../context';
+import { orange } from '@mui/material/colors';
+import { authSession, logoutSession } from '../../../context/reduces/authSessionUser';
+import { Student } from '../../../interface/student';
 
 interface Props {
     total: number
@@ -14,7 +17,30 @@ const EndCard:FC<Props> = ({total}) => {
 
     const session = useSelector((state: RootState) => state.SessionUser.value)
     const _id = session.map(e=> e.id)
+    const navigate = useNavigate()
+
+    const dispatch = useDispatch()
+
+    const user = session.map((u: any)=> ({
+        id:         u.id, 
+        name:       u.name,
+        lastName:   u.lastName,
+        email:      u.email,
+        point:      u.point + total,
+        nivel:      u.nivel + 1,
+        role:       u.role,
+        state:      u.state,
+    })
+    )
     
+    const sendPoints = ()=> {
+        dispatch(logoutSession())
+        dispatch(authSession(user[0]))
+
+            navigate(`/user/${_id[0]}`)
+    }
+
+
   return (
     <>
     <Box
@@ -28,8 +54,8 @@ const EndCard:FC<Props> = ({total}) => {
             bgcolor={'primary.dark'}
             borderRadius={2}
             boxShadow={2}
-            height={'70%'}
-            width={'80%'}
+            height={'60%'}
+            width={{ xs: '80%', md: '60%'}}
             p={1}
         >
             <Box
@@ -42,29 +68,38 @@ const EndCard:FC<Props> = ({total}) => {
             >
                 <Stack
                     direction={'column'}
-                    spacing={3}
+                    spacing={5}
                 >
-                    <Typography
-                        textAlign={'center'}
-                        fontSize={'20px'}
+                    <Box
+                        bgcolor={'secondary.dark'}
+                        borderRadius={1}
+                        p={1}
                     >
-                        Conseguiste !!
-                    </Typography>
+                        <Typography
+                            textAlign={'center'}
+                            fontSize={'20px'}
+                            color={orange[500]}
+                        >
+                            Conseguiste !!
+                        </Typography>
+                    </Box>
                     <Typography
+                        color={'secondary.light'}
                         textAlign={'center'}
                         fontSize={'30px'}
                     >
-                        {total}
+                        {total} Puntos
                     </Typography>
 
-                    <NavLink to={`/user/${_id[0]}`}>
+                    {/* <NavLink to={}> */}
                         <Button
                             variant='contained'
                             fullWidth
+                            onClick={()=> sendPoints()}
                         >
-                            Ir a Dashboard
+                            Enviar
                         </Button>
-                    </NavLink>
+                    {/* </NavLink> */}
                 </Stack>
 
             </Box>

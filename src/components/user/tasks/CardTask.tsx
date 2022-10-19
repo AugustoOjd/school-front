@@ -8,7 +8,6 @@ import { Navigate, useParams } from 'react-router-dom'
 import { data } from '../../../utils/questions'
 
 
-// console.log(test)
 
 const CardTask = () => {
 
@@ -62,7 +61,7 @@ const CardTask = () => {
       setError(5)
       setPage(page + 1)
       setResultado( resultado + valor)
-    }, 1000);
+    }, 1200);
 
 
   }
@@ -94,19 +93,6 @@ const CardTask = () => {
             />
             :
             <EndCard total={resultado}/>
-            // data.map((e:any)=> (<DetailsCardTask
-            //   key={e.id} 
-            //   img={e.img} 
-            //   question={e.pregunta} 
-            //   option1={e.opciones.map((o:any)=> o.a.op)} 
-            //   option2={e.opciones.map((o:any)=> o.b.op)} 
-            //   option3={e.opciones.map((o:any)=> o.c.op)}
-            //   option4={e.opciones.map((o:any)=> o.d.op)}
-            //   event1={ ()=> handlerPuntos(e.opciones.map((o:any)=> o.a.value))}
-            //   event2={ ()=> handlerPuntos(e.opciones.map((o:any)=> o.b.value))}
-            //   event3={ ()=> handlerPuntos(e.opciones.map((o:any)=> o.c.value))}
-            //   event4={ ()=> handlerPuntos(e.opciones.map((o:any)=> o.d.value))}
-            //   />))
           }
         </Box>
     </>

@@ -69,7 +69,7 @@ const CardIntro = () => {
                             component={'p'}
                             fontSize={{xs: '12px', sm: '18px', md: '25px', lg: '35px'}}
                         >
-                            Es un app de preguntas de cultura general, donde pondras a prueba tus conocimientos de historia, peliculas, series, geografia y deporte.
+                            Es un app de preguntas de cultura general, donde pondras a prueba tus conocimientos de historia, peliculas, series, geografia y deporte,
                         </Typography>
                         <Typography
                             component={'p'}

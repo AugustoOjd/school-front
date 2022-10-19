@@ -17,15 +17,14 @@ const BaseDashboardUser = () => {
 
     const dispatch = useDispatch()
 
-
     useEffect(() => {
   
       const user = Cookies.get('user')
       
       const data = JSON.parse(user!)
 
-
-      if(session.length <= 0){
+      // console.log(session[0])
+      if(!session[0]){
         dispatch(logoutSession())
         dispatch(authSession(data))
         dispatch(isLogin())
@@ -33,7 +32,7 @@ const BaseDashboardUser = () => {
       }
       
       setLoading(false)
-    }, [session])
+    }, [loading])
 
   return (
     <>
@@ -64,7 +63,7 @@ const BaseDashboardUser = () => {
           width={'100%'}
           >
           {
-              session.map((e)=> (
+              session.map((e: any)=> (
                   <CardDashboardUser  
                     iniciales={(e.name.charAt(0).toUpperCase() + e.lastName.charAt(0).toUpperCase())} 
                     nombre={(e.name.charAt(0).toUpperCase()) + e.name.slice(1)} 

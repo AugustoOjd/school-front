@@ -13,6 +13,7 @@ interface Data {
   lastName:     string;
   country:      string;
   point:        number;
+  nivel:        number;
   state:        boolean;
   id:           string
 }
@@ -38,6 +39,7 @@ const CardTable = () => {
     { field: 'lastName',  headerName: 'Apellido', minWidth: 120 },
     { field: 'country',   headerName: 'Pais', minWidth: 120 },
     { field: 'point',     headerName: 'Puntos', minWidth: 40 },
+    { field: 'nivel',     headerName: 'Nivel', minWidth: 120},
     { field: 'state',     headerName: 'State', minWidth: 30,
       renderCell: ({row}: GridRenderCellParams):React.ReactNode=>(
           <Button
@@ -85,6 +87,7 @@ const CardTable = () => {
         lastName: user.lastName.charAt(0).toLocaleUpperCase() + user.lastName.slice(1),
         country:  user.country.charAt(0).toLocaleUpperCase() + user.country.slice(1),
         point:    user.point,
+        nivel:    user.nivel,
         state:    user.state,
         id:       user.id
       }))

@@ -66,7 +66,7 @@ const Details = () => {
                             component={'p'}
                             fontSize={{xs: '15px', sm: '17px', lg: '20px', xl: '25px'}}
                         >
-                            Para participar necesitas registrarte, en este formulario, no es necesario colocar tus datos reales, solo necesitas un correo y un nombre que te identifique.
+                            Para participar necesitas registrarte en este formulario, no es necesario colocar tus datos reales, solo necesitas un correo valido y un nombre que te identifique.
                             Te agradeceria mucho si te registraras y participaras en las preguntas, asi puedo seguir probando y mejorando esta aplicacion 
                         </Typography>
                         <Typography

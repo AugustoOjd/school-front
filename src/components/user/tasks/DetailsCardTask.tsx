@@ -180,10 +180,13 @@ const DetailsCardTask:FC<Props> = ({
                                       >
                                           {option4}
                                       </Button>
-                                      <Box>
+                                      <Box
+                                        bgcolor={'secondary.dark'}
+                                        borderRadius={1}
+                                      >
                                         <Typography
                                           textAlign={'center'}
-                                          color={'green'}
+                                          color={'white'}
                                           fontSize={'18px'}
                                         >
                                               {error === 10 ? 'Correcto! + 10' : ''}
