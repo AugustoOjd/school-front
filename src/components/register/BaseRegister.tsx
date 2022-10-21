@@ -16,7 +16,8 @@ const BaseRegister = () => {
           <Stack 
             direction={{base: 'column', md: 'row'}} 
             spacing={2} 
-            padding={2}
+            padding={1}
+            px={{sm: 5, lg: 10}}
             width={'100%'}
             >
             

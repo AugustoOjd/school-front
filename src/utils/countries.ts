@@ -1,10 +1,12 @@
 export const countries = [
     'Argentina',
+    'Brasil',
     'Bolivia', 
     'Chile',
     'Colombia',
-    'Costa Rica',
+    'Ecuador',
     'Mexico',
+    'Paraguay',
     'Peru',
     'Uruguay',
     'Venezuela'

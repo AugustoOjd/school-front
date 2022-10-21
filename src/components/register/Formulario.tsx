@@ -10,18 +10,16 @@ import { isEmail } from '../../utils/valitations';
 // Axios
 import { instance } from '../../api/axiosApi';
 // Redux
-import { useCookies } from 'react-cookie'
 import { useDispatch, useSelector } from 'react-redux';
-import { authSession } from '../../context/reduces/authSessionUser';
+import { authSession, logoutSession } from '../../context/reduces/authSessionUser';
 import { isLogin } from '../../context/reduces/authLoginUser';
+import Cookies from 'js-cookie';
 
 
 const Formulario = () => {
 
   const [statusOk, setStatusOk] = useState(false)
   const [statusError, setStatusError] = useState(false)
-
-  const [cookies, setCookie] = useCookies(['token']);
 
   const navigate = useNavigate()
 
@@ -41,10 +39,14 @@ const Formulario = () => {
 
       const { student, token } = res.data
 
-      console.log( student, token)
+      Cookies.remove('token')
+      Cookies.remove('user')
 
-      setCookie('token', token);
+      Cookies.set('token', token);
+      Cookies.set('user', JSON.stringify(student));
 
+
+      dispatch(logoutSession())
       const estado = dispatch(authSession(student))
 
       dispatch(isLogin())

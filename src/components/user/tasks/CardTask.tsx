@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react'
-import ReactPaginate from 'react-paginate'
 
-import { Box, Button, Typography } from '@mui/material'
+import { Box} from '@mui/material'
 import DetailsCardTask from './DetailsCardTask'
 import EndCard from './EndCard'
-import { Navigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { data } from '../../../utils/questions'
+import Cookies from 'js-cookie'
 
 
 
@@ -16,24 +16,40 @@ const CardTask = () => {
   const [parametro, setParametro] = useState([{}])
   const [error, setError] = useState(5)
 
+  const navigate = useNavigate()
+
+  const user = Cookies.get('user')
+  const userParse = JSON.parse(user!)
+
   const { nivel } = useParams()
 
   useEffect(() => {
     switch (nivel) {
       case 'nivel1':
         
+        if(userParse.nivel > 1){
+          navigate(`/user/${userParse.id}`)
+        }
         return setParametro(data[0].nivel1)
   
       case 'nivel2':
-      
+        if(userParse.nivel > 2 || userParse.nivel < 2){
+          navigate(`/user/${userParse.id}`)
+        }
         return setParametro(data[0].nivel2)
 
       case 'nivel3':
     
+        if(userParse.nivel > 3 || userParse.nivel < 3){
+          navigate(`/user/${userParse.id}`)
+        }
         return setParametro(data[0].nivel3)
 
       case 'nivel4':
   
+        if(userParse.nivel > 4 || userParse.nivel < 4){
+          navigate(`/user/${userParse.id}`)
+        }
         return setParametro(data[0].nivel4)
     
       default:

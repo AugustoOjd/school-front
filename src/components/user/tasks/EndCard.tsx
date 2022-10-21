@@ -1,4 +1,4 @@
-import React, {FC} from 'react'
+import React, {FC, useState} from 'react'
 import { Box, Typography, Stack, Button } from '@mui/material';
 import { NavLink, useNavigate } from 'react-router-dom';
 
@@ -6,8 +6,12 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../context';
 import { orange } from '@mui/material/colors';
+import { LoadingButton } from '@mui/lab';
+import SendIcon from '@mui/icons-material/Send';
 import { authSession, logoutSession } from '../../../context/reduces/authSessionUser';
 import { Student } from '../../../interface/student';
+import { instance } from '../../../api/axiosApi';
+import Cookies from 'js-cookie';
 
 interface Props {
     total: number
@@ -15,6 +19,8 @@ interface Props {
 
 const EndCard:FC<Props> = ({total}) => {
 
+    const [sending, setSending] = useState(false)
+    const [sendError, setSendError] = useState(false)
     const session = useSelector((state: RootState) => state.SessionUser.value)
     const _id = session.map(e=> e.id)
     const navigate = useNavigate()
@@ -33,11 +39,35 @@ const EndCard:FC<Props> = ({total}) => {
     })
     )
     
-    const sendPoints = ()=> {
-        dispatch(logoutSession())
-        dispatch(authSession(user[0]))
+    console.log(user[0])  
 
+    const sendPoints = async ()=> {
+
+        setSending(true)
+
+        try {
+            await instance.put(`/student/dashboard/${_id}`, {
+                point: user[0].point,
+                nivel: user[0].nivel
+            })
+
+            Cookies.remove('user')
+            Cookies.set('user', JSON.stringify(user[0]))
+            
+            dispatch(logoutSession())
+            dispatch(authSession(user[0]))
+    
             navigate(`/user/${_id[0]}`)
+
+            setSending(false)
+        } catch (error) {
+            setSendError(true)
+            setTimeout(() => {
+                navigate(`/user/${_id[0]}`)
+            }, 1000);
+            
+        }
+
     }
 
 
@@ -90,16 +120,36 @@ const EndCard:FC<Props> = ({total}) => {
                     >
                         {total} Puntos
                     </Typography>
-
-                    {/* <NavLink to={}> */}
-                        <Button
-                            variant='contained'
-                            fullWidth
-                            onClick={()=> sendPoints()}
-                        >
-                            Enviar
-                        </Button>
-                    {/* </NavLink> */}
+                        {
+                            sending
+                            ?
+                            <LoadingButton loading variant="contained">
+                            Submit
+                            </LoadingButton>
+                            :
+                            (
+                                sendError
+                                ?
+                                <Button
+                                color='error'
+                                variant='contained'
+                                fullWidth
+                                disabled
+                                >
+                                    Error
+                                </Button>
+                                :
+                                <Button
+                                variant='contained'
+                                fullWidth
+                                onClick={()=> sendPoints()}
+                                >
+                                    Enviar
+                                </Button>
+                            
+                            )
+                        
+                        }
                 </Stack>
 
             </Box>
