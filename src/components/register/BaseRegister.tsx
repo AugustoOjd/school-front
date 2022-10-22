@@ -10,7 +10,7 @@ const BaseRegister = () => {
           display={'flex'} 
           bgcolor={'primary.light'} 
           width={'100%'} 
-          height={{ xs: '1200px', md:'680px', lg: '700px' }}
+          height={{ xs: '1400px', md:'700px', lg: '700px' }}
           >
 
           <Stack 

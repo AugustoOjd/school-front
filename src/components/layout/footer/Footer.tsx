@@ -1,11 +1,19 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
+import FooterCard from './FooterCard'
 
 const Footer = () => {
   return (
     <>
-        <Box bgcolor={'secondary.dark'} width={'100%'} height={'180px'}>
-            <Typography color={'black'} fontSize={' 30px'}> Esto esa footer</Typography>
+        <Box
+          display={'flex'}
+          justifyContent={'center'}
+          alignItems={'center'}
+          bgcolor={'secondary.dark'} 
+          width={'100%'} 
+          height={'100px'}
+          >
+            <FooterCard/>
         </Box>
     </>
   )

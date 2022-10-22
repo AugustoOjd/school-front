@@ -20,6 +20,8 @@ const Formulario = () => {
 
   const [statusOk, setStatusOk] = useState(false)
   const [statusError, setStatusError] = useState(false)
+  const [country, setCountry] = useState('');
+  const [errorMail, setErrorMail] = useState(false)
 
   const navigate = useNavigate()
 
@@ -60,15 +62,17 @@ const Formulario = () => {
       }
 
       setStatusOk(true)
-      // TODO: FALTA DIRIGIR AL USUARIO A SU DASHBOARD CON EL TOKEN EN LA COOKIE
     })
     .catch((error) => {
-      console.log(error);
+      // console.log(error.response.data.msg);
+      
+      const eMail = error.response.data.msg
+      if(eMail){
+        return setErrorMail(true)
+      }
+      
       setStatusError(true)
-      // TODO: FALTAN LOS ERRORES DE LOS DATOS INGRESADOS
     });
-
-    const [country, setCountry] = useState('');
 
     const handleChange = (event: SelectChangeEvent) => {
       setCountry(event.target.value as string);
@@ -135,14 +139,20 @@ const Formulario = () => {
                     error={ !!errors.email }
                     helperText={ errors.email?.message } 
                     />
-                
+                    {  
+                      errorMail && <Typography
+                        fontSize={15}
+                        color={'error'}
+                      >Ya existe este correo
+                      </Typography>
+                    }
                 <FormControl fullWidth>
                   <InputLabel id="demo-simple-select-label">Pais</InputLabel>
                   <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={country}
-                    label="Age"
+                    label="Pais"
                     
                     {...register("country", {
                         required: true,
@@ -183,6 +193,13 @@ const Formulario = () => {
 
             </Stack>
             </form>
+                {  
+                  statusError && <Typography
+                    fontSize={15}
+                    color={'error'}
+                  >Error de servidor
+                  </Typography>
+                }
         </Box>
     </>
   )

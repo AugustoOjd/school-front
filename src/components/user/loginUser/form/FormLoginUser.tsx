@@ -70,37 +70,6 @@ const FormLoginUser = () => {
             })
     }
     
-    
-    // axios.post(loginURL, await {
-    //     email:      data.email.toLowerCase(),
-    //     password:   data.password
-    //   })
-    //   .then(function (response) {
-    //     console.log(response.data);
-
-    //     const user = response.data.student
-
-    //     const token = response.data.token
-
-        
-    //     // Cookies.set('token', token)
-    //     setCookie('token', token);
-
-
-    //     setStatusOk(true)
-    //     const prueba = dispatch(authSession(user))
-    //     console.log('Eso es prueba del estado  ', prueba.payload)
-    //     console.log('Esto es session', session)
-    //     dispatch(isLogin())
-
-
-    //     // TODO: SI TODO DA OK, MANDAR AL USUARIO A SU DASHBOARD CON EL TOKEN EN LA COOKIE
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //     setStatusError(true)
-    //     // TODO: FALTA MANDARLE LOS ERRORES DE FORM AL USUARIO PARA QUE PUEDA CORREGIRLOS
-    //   });
 
   return (
     <>
