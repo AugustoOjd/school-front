@@ -5,6 +5,6 @@ export const instance = axios.create({
     withCredentials: true,
     headers:{
         origin: "https://uculture.onrender.com/",
-        
+        header: "https://uculture.onrender.com/"
     }
 })
