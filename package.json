@@ -2,7 +2,11 @@
   "name": "school-app",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://uculture.onrender.com/",
+  "proxy": {
+    "/api" : {
+      "target" : "https://uculture.onrender.com/",
+      "changeOrigin" : true
+    },
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
