@@ -45,51 +45,51 @@ const EndCard:FC<Props> = ({total}) => {
 
         setSending(true)
 
-        instance.put(`/student/dashboard/${_id}`, {
-            point: user[0].point,
-            nivel: user[0].nivel
-        })
-            .then((res)=>{
+        // instance.put(`/student/dashboard/${_id}`, {
+        //     point: user[0].point,
+        //     nivel: user[0].nivel
+        // })
+        //     .then((res)=>{
 
-                const { student } = res.data
-                Cookies.remove('user')
-                Cookies.set('user', JSON.stringify(student))
+        //         const { student } = res.data
+        //         Cookies.remove('user')
+        //         Cookies.set('user', JSON.stringify(student))
                 
-                dispatch(logoutSession())
-                dispatch(authSession(student))
+        //         dispatch(logoutSession())
+        //         dispatch(authSession(student))
         
-                navigate(`/user/${student.id}`)
-            })
-            .catch((error)=>{
+        //         navigate(`/user/${student.id}`)
+        //     })
+        //     .catch((error)=>{
 
-                setSendError(true)
-                setTimeout(() => {
-                    navigate(`/user/${_id[0]}`)
-                }, 1000);
-            })
-
-        // try {
-        //     await instance.put(`/student/dashboard/${_id}`, {
-        //         point: user[0].point,
-        //         nivel: user[0].nivel
+        //         setSendError(true)
+        //         setTimeout(() => {
+        //             navigate(`/user/${_id[0]}`)
+        //         }, 1000);
         //     })
 
-        //     Cookies.remove('user')
-        //     Cookies.set('user', JSON.stringify(user[0]))
-            
-        //     dispatch(logoutSession())
-        //     dispatch(authSession(user[0]))
-    
-        //     navigate(`/user/${_id[0]}`)
+        try {
+            await instance.put(`/student/dashboard/${_id}`, {
+                point: user[0].point,
+                nivel: user[0].nivel
+            })
 
-        //     setSending(false)
-        // } catch (error) {
-        //     setSendError(true)
-        //     setTimeout(() => {
-        //         navigate(`/user/${_id[0]}`)
-        //     }, 1000);
+            Cookies.remove('user')
+            Cookies.set('user', JSON.stringify(user[0]))
             
-        // }
+            dispatch(logoutSession())
+            dispatch(authSession(user[0]))
+    
+            navigate(`/user/${_id[0]}`)
+
+            setSending(false)
+        } catch (error) {
+            setSendError(true)
+            setTimeout(() => {
+                navigate(`/user/${_id[0]}`)
+            }, 1000);
+            
+        }
 
     }
 

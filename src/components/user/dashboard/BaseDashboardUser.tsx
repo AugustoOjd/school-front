@@ -23,14 +23,14 @@ const BaseDashboardUser = () => {
       
       const data = JSON.parse(user!)
 
-      console.log('data', data)
-      console.log('session', session)
-      // if(!session[0]){
+      // console.log('data', data)
+      // console.log('session', session)
+      if(!session[0]){
         dispatch(logoutSession())
-        dispatch(authSession(data[0]))
+        dispatch(authSession(data))
         dispatch(isLogin())
-        // setLoading(false)
-      // }
+        setLoading(false)
+      }
       
       setLoading(false)
     }, [loading])
