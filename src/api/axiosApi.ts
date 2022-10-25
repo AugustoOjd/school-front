@@ -10,6 +10,6 @@ export const instance = axios.create({
         token: Cookies.get('token')!,
         user:  Cookies.get('user')!
     },
-    withCredentials: true,
+    // withCredentials: true,
     
 })
