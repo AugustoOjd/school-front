@@ -13,7 +13,7 @@ const BaseDashboardUser = () => {
 
     const [loading, setLoading] = useState(true)
 
-    let session = useAppSelector((state: RootState) => state.SessionUser.value)
+    const session = useAppSelector((state: RootState) => state.SessionUser.value)
 
     const dispatch = useDispatch()
 
@@ -23,11 +23,11 @@ const BaseDashboardUser = () => {
       
       const data = JSON.parse(user!)
 
-      console.log('session[0]', session[0])
+      console.log('data', data)
       console.log('session', session)
       // if(!session[0]){
         dispatch(logoutSession())
-        dispatch(authSession(data))
+        dispatch(authSession(data[0]))
         dispatch(isLogin())
         // setLoading(false)
       // }
@@ -64,7 +64,7 @@ const BaseDashboardUser = () => {
           width={'100%'}
           >
           {
-              session[0].map((e: any)=> (
+              session.map((e: any)=> (
                   <CardDashboardUser  
                     iniciales={(e.name.charAt(0).toUpperCase() + e.lastName.charAt(0).toUpperCase())} 
                     nombre={(e.name.charAt(0).toUpperCase()) + e.name.slice(1)} 
