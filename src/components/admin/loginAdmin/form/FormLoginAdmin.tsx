@@ -12,21 +12,25 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { authSessionA } from '../../../../context/reduces/authSessionAdmin';
 import Cookies from 'js-cookie';
+import { LoadingButton } from '@mui/lab';
 
 
 const FormLoginAdmin = () => {
 
     const [statusOk, setStatusOk] = useState(false)
     const [statusError, setStatusError] = useState(false)
+    const [sending, setSending] = useState(true)
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
     // Evento de hook form mas post con axios
     const { register, handleSubmit, formState: {errors} } = useForm<ILogin>();
-    const onSubmit: SubmitHandler<ILogin> = async (data) => instance.post('/admin', await {
-        email:      data.email,
-        password:   data.password
+    const onSubmit: SubmitHandler<ILogin> = async ({email, password}) => {
+    
+    instance.post('/admin', {
+        email:      email,
+        password:   password
       })
       .then((res) => {
         // console.log(res.data);
@@ -53,10 +57,12 @@ const FormLoginAdmin = () => {
         // TODO: SI TODO DA OK, MANDAR AL USUARIO A SU DASHBOARD CON EL TOKEN EN LA COOKIE
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         setStatusError(true)
         // TODO: FALTA MANDARLE LOS ERRORES DE FORM AL USUARIO PARA QUE PUEDA CORREGIRLOS
       });
+
+    }
 
   return (
     <>
@@ -114,13 +120,21 @@ const FormLoginAdmin = () => {
                             null
                         }
 
-                    <Button 
+                    {
+                        sending
+                        ?
+                        <LoadingButton loading variant="contained">
+                        Submit
+                        </LoadingButton>
+                        :
+                        <Button 
                         variant='contained'
                         color={'primary'} 
                         fullWidth
                         type='submit'
                         >Ingresar
-                    </Button>
+                        </Button>
+                    }
                 </Stack>
             </form>
         </Box>
