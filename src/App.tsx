@@ -15,18 +15,9 @@ import UserLogin from './Pages/UserLogin';
 import AdminLogin from './Pages/AdminLogin';
 import Tasks from './Pages/Tasks';
 
-import Cookies from 'js-cookie';
-
-// Redux
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from './context';
-import { authSession } from './context/reduces/authSessionUser';
-
-
 
 function App() {
 
-  const session = useSelector((state: RootState)=> state.SessionUser.value)
 
   return (
     <>
@@ -36,13 +27,8 @@ function App() {
 
           <Route path='/' element={<Home/>} />
 
-          {/* Login y Dashboard user */}
           <Route path='/user/login' element={<UserLogin/>} />
-          <Route path='/user/:id' element={
-            // session.length > 0 ? 
-            <Student/>
-            //  : <Home/>
-             } />
+          <Route path='/user/:id' element={ <Student/> } />
 
           {/* Login y Dashboard admin */}
           <Route path='/admin/:id' element={<Admin/>} />

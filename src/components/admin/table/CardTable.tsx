@@ -27,11 +27,11 @@ const CardTable = () => {
   const [users, setUsers] = useState()
   const [estado, setEstado] = useState(0)
 
-  // const admin = useSelector((state: RootState)=> state.SessionAdmin.value)
+  const admin = useSelector((state: RootState)=> state.SessionAdmin.value)
 
-  // const adminId = admin[0].id || 0
+  const adminId = admin[0].id || 0
 
-  const { adminId } = useParams()
+  // const { adminId } = useParams()
 
   const columns:GridColDef[] = [
     { field: 'nro',       headerName: 'Nro', minWidth: 10 },
