@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { authSession, logoutSession } from '../../context/reduces/authSessionUser';
 import { isLogin } from '../../context/reduces/authLoginUser';
 import Cookies from 'js-cookie';
+import { LoadingButton } from '@mui/lab';
 
 
 const Formulario = () => {
@@ -22,6 +23,7 @@ const Formulario = () => {
   const [statusError, setStatusError] = useState(false)
   const [country, setCountry] = useState('');
   const [errorMail, setErrorMail] = useState(false)
+  const [seding, setSeding] = useState(false)
 
   const navigate = useNavigate()
 
@@ -62,6 +64,7 @@ const Formulario = () => {
       }
 
       setStatusOk(true)
+      setSeding(false)
     })
     .catch((error) => {
       // console.log(error.response.data.msg);
@@ -72,6 +75,7 @@ const Formulario = () => {
       }
       
       setStatusError(true)
+      setSeding(false)
     });
 
     const handleChange = (event: SelectChangeEvent) => {
@@ -183,13 +187,22 @@ const Formulario = () => {
                     helperText={ errors.password?.message } 
                     />
 
-                <Button 
+                {
+                  seding
+                  ?
+                  <LoadingButton loading variant="contained">
+                  Submit
+                  </LoadingButton>
+                  :
+                  <Button 
                         variant='contained'
                         color={'primary'} 
                         fullWidth
                         type='submit'
                         >registrarse
                 </Button>
+                
+                }
 
             </Stack>
             </form>

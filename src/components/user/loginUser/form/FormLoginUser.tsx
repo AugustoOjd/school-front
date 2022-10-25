@@ -13,6 +13,7 @@ import { RootState } from '../../../../context/store/store';
 
 import { useNavigate } from 'react-router-dom';
 import { instance } from '../../../../api/axiosApi';
+import { LoadingButton } from '@mui/lab';
 
 
 
@@ -20,6 +21,7 @@ const FormLoginUser = () => {
 
     const [statusOk, setStatusOk] = useState(false)
     const [statusError, setStatusError] = useState(false)
+    const [sending, setSending] = useState(false)
 
     const [cookies, setCookie] = useCookies(['token', 'user']);
 
@@ -63,10 +65,12 @@ const FormLoginUser = () => {
                     navigate(`/user/${student.id}`)
                 }
 
+                setSending(false)
             })
             .catch((err)=>{
                 // console.log(err)
                 setStatusError(true)
+                setSending(false)
             })
     }
     
@@ -126,14 +130,22 @@ const FormLoginUser = () => {
                             :
                             null
                         }
-                    
-                        <Button 
-                            variant='contained'
-                            color={'primary'} 
-                            fullWidth
-                            type='submit'
-                            >Ingresar
-                        </Button>
+                        {
+                            sending
+                            ?
+                            <LoadingButton loading variant="contained">
+                            Submit
+                            </LoadingButton>
+                            :
+                            <Button 
+                                variant='contained'
+                                color={'primary'} 
+                                fullWidth
+                                type='submit'
+                                onClick={()=> setSending(true)}
+                                >Ingresar
+                            </Button>
+                        }
                 </Stack>
             </form>
         </Box>
