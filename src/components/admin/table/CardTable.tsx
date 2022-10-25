@@ -5,6 +5,7 @@ import { instance } from '../../../api/axiosApi';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../context/store/store';
 import { useParams } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 
 interface Data {
@@ -27,9 +28,12 @@ const CardTable = () => {
   const [users, setUsers] = useState()
   const [estado, setEstado] = useState(0)
 
-  const admin = useSelector((state: RootState)=> state.SessionAdmin.value)
+  // const admin = useSelector((state: RootState)=> state.SessionAdmin.value)
 
-  const adminId = admin[0].id || 0
+  const admin = Cookies.get('admin')
+  const adminParse =  JSON.parse(admin || '')
+
+  const adminId = adminParse[0].id || 0
 
   // const { adminId } = useParams()
 
