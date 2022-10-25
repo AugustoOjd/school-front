@@ -32,6 +32,7 @@ const Formulario = () => {
     const { register, handleSubmit, formState: {errors} } = useForm<IRegister>();
     const onSubmit: SubmitHandler<IRegister> = async ({name, lastName, email, country, password}) => 
 
+    setSeding(true)
       instance.post('/register', {
         name:     name.toLocaleLowerCase(),
         lastName: lastName.toLocaleLowerCase(),

@@ -37,6 +37,8 @@ const FormLoginUser = () => {
             formState: {errors} } = useForm<ILogin>();
 
     const onSubmit: SubmitHandler<ILogin> =  async ({email, password}) => {
+
+        setSending(true)
         
         instance.post('/login', {
             email:      email.toLowerCase(),
@@ -142,7 +144,6 @@ const FormLoginUser = () => {
                                 color={'primary'} 
                                 fullWidth
                                 type='submit'
-                                onClick={()=> setSending(true)}
                                 >Ingresar
                             </Button>
                         }
