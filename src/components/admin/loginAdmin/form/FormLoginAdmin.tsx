@@ -19,7 +19,7 @@ const FormLoginAdmin = () => {
 
     const [statusOk, setStatusOk] = useState(false)
     const [statusError, setStatusError] = useState(false)
-    const [sending, setSending] = useState(true)
+    const [sending, setSending] = useState(false)
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -28,6 +28,7 @@ const FormLoginAdmin = () => {
     const { register, handleSubmit, formState: {errors} } = useForm<ILogin>();
     const onSubmit: SubmitHandler<ILogin> = async ({email, password}) => {
     
+        setSending(true)
     instance.post('/admin', {
         email:      email,
         password:   password
@@ -53,12 +54,13 @@ const FormLoginAdmin = () => {
             navigate(`/admin/${admin.id}`)
         }
 
-
+        setSending(false)
         // TODO: SI TODO DA OK, MANDAR AL USUARIO A SU DASHBOARD CON EL TOKEN EN LA COOKIE
       })
       .catch((error) => {
         // console.log(error);
         setStatusError(true)
+        setSending(false)
         // TODO: FALTA MANDARLE LOS ERRORES DE FORM AL USUARIO PARA QUE PUEDA CORREGIRLOS
       });
 
