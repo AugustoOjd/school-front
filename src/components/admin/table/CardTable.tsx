@@ -55,8 +55,7 @@ const CardTable = () => {
           </Button>
   
       )
-      },
-      { field: 'id',   headerName: 'Id', minWidth: 200 },
+      }
   ];
 
 
@@ -73,7 +72,7 @@ const CardTable = () => {
       })
       .catch((error)=>{
         setEstado(estado)
-        console.log(error)
+        // console.log(error)
       })
   }
 
@@ -92,8 +91,7 @@ const CardTable = () => {
         country:  user.country.charAt(0).toLocaleUpperCase() + user.country.slice(1),
         point:    user.point,
         nivel:    user.nivel,
-        state:    user.state,
-        id:       user.id
+        state:    user.state
       }))
     )
       setUsers(rows)
