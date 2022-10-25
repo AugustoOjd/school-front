@@ -59,7 +59,7 @@ const CardTable = () => {
   // funcion que cambia el estado y manda un post
   const changeState = async (id: string, state: boolean)=>{
 
-    instance.put(`/admin/dashboard/${adminId}`, await {
+    instance.put(`/admin/dashboard/${adminId}`,{
       id:     id,
       state:  !state
     })
@@ -69,7 +69,7 @@ const CardTable = () => {
       })
       .catch((error)=>{
         setEstado(estado)
-        // console.log(error)
+        console.log(error)
       })
   }
 
