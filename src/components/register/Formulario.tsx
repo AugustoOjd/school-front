@@ -30,9 +30,11 @@ const Formulario = () => {
   const dispatch = useDispatch()
 
     const { register, handleSubmit, formState: {errors} } = useForm<IRegister>();
-    const onSubmit: SubmitHandler<IRegister> = async ({name, lastName, email, country, password}) => 
+    const onSubmit: SubmitHandler<IRegister> = async ({name, lastName, email, country, password}) => {
 
-    setSeding(true)
+      
+      setSeding(true)
+
       instance.post('/register', {
         name:     name.toLocaleLowerCase(),
         lastName: lastName.toLocaleLowerCase(),
@@ -78,6 +80,7 @@ const Formulario = () => {
       setStatusError(true)
       setSeding(false)
     });
+  }
 
     const handleChange = (event: SelectChangeEvent) => {
       setCountry(event.target.value as string);
