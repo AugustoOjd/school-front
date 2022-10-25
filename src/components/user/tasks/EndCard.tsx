@@ -39,7 +39,7 @@ const EndCard:FC<Props> = ({total}) => {
     })
     )
     
-    console.log(user[0])  
+    // console.log(user[0])  
 
     const sendPoints = async ()=> {
 
