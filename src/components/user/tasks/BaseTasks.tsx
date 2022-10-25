@@ -76,7 +76,7 @@ const BaseTasks = () => {
                     />
                     <CardContent>
                         {
-                            user > 1
+                            user > 0
                             ?
                             <Button
                                 variant='contained'
@@ -113,7 +113,7 @@ const BaseTasks = () => {
                     />
                     <CardContent>
                         {
-                        user < 2 || user > 2
+                        user < 1 || user > 1
                         ?
 
                         <Button
@@ -123,7 +123,7 @@ const BaseTasks = () => {
                             fullWidth
                             disabled
                         >
-                            {user > 2 ? 'Completado' : 'Faltan puntos nv2'}
+                            {user > 1 ? 'Completado' : 'Faltan puntos nv2'}
                         </Button>
                         
                         :
@@ -154,7 +154,7 @@ const BaseTasks = () => {
                     />
                     <CardContent>
                     {
-                        user < 3 || user > 3
+                        user < 2 || user > 2
                         ?
                         
                         <Button
@@ -164,7 +164,7 @@ const BaseTasks = () => {
                             fullWidth
                             disabled
                         >
-                            {user > 3 ? 'Completado' : 'Faltan puntos nv3'}
+                            {user > 2 ? 'Completado' : 'Faltan puntos nv3'}
                         </Button>
                         :
                         <NavLink to={`/user/${_id[0]}/nivel3`}>
@@ -194,7 +194,7 @@ const BaseTasks = () => {
                     />
                     <CardContent>
                     {
-                        user < 4 || user > 4
+                        user < 3 || user > 3
                         ?
                         <Button
                             variant='contained'
@@ -203,7 +203,7 @@ const BaseTasks = () => {
                             fullWidth
                             disabled
                         >
-                            {user > 4 ? 'Completado' : 'Faltan puntos nv4'}
+                            {user > 3 ? 'Completado' : 'Faltan puntos nv4'}
                         </Button>
                         :
                         <NavLink to={`/user/${_id[0]}/nivel4`}>

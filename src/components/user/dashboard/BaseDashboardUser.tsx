@@ -23,13 +23,14 @@ const BaseDashboardUser = () => {
       
       const data = JSON.parse(user!)
 
-      // console.log(session[0])
-      if(!session[0]){
+      console.log('session[0]', session[0])
+      console.log('session', session)
+      // if(!session[0]){
         dispatch(logoutSession())
         dispatch(authSession(data))
         dispatch(isLogin())
-        setLoading(false)
-      }
+        // setLoading(false)
+      // }
       
       setLoading(false)
     }, [loading])
@@ -63,7 +64,7 @@ const BaseDashboardUser = () => {
           width={'100%'}
           >
           {
-              session.map((e: any)=> (
+              session[0].map((e: any)=> (
                   <CardDashboardUser  
                     iniciales={(e.name.charAt(0).toUpperCase() + e.lastName.charAt(0).toUpperCase())} 
                     nombre={(e.name.charAt(0).toUpperCase()) + e.name.slice(1)} 

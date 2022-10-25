@@ -27,27 +27,27 @@ const CardTask = () => {
     switch (nivel) {
       case 'nivel1':
         
-        if(userParse.nivel > 1){
+        if(userParse.nivel > 0){
           navigate(`/user/${userParse.id}`)
         }
         return setParametro(data[0].nivel1)
   
       case 'nivel2':
-        if(userParse.nivel > 2 || userParse.nivel < 2){
+        if(userParse.nivel > 1 || userParse.nivel < 1){
           navigate(`/user/${userParse.id}`)
         }
         return setParametro(data[0].nivel2)
 
       case 'nivel3':
     
-        if(userParse.nivel > 3 || userParse.nivel < 3){
+        if(userParse.nivel > 2 || userParse.nivel < 2){
           navigate(`/user/${userParse.id}`)
         }
         return setParametro(data[0].nivel3)
 
       case 'nivel4':
   
-        if(userParse.nivel > 4 || userParse.nivel < 4){
+        if(userParse.nivel > 3 || userParse.nivel < 3){
           navigate(`/user/${userParse.id}`)
         }
         return setParametro(data[0].nivel4)
