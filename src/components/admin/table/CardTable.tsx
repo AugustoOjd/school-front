@@ -31,9 +31,9 @@ const CardTable = () => {
   // const admin = useSelector((state: RootState)=> state.SessionAdmin.value)
 
   const admin = Cookies.get('admin')
-  const adminParse =  JSON.parse(admin || '')
+  const adminParse =  JSON.parse(admin!)
 
-  const adminId = adminParse[0].id || 0
+  const adminId = adminParse.id || 0
 
   // const { adminId } = useParams()
 
