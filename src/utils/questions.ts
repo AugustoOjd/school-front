@@ -739,7 +739,7 @@ export const data = [
             {
               id: 2,
               img: "https://static.nationalgeographicla.com/files/styles/image_3200/public/01-edge-of-space-sts080-759-038_orig.jpg?w=1900&h=1900",
-              pregunta: '¿Que se humano viajó al espacio por primer vez?',
+              pregunta: '¿Que ser humano viajó al espacio por primer vez?',
               opciones: [ {
                   a: {
                       op: 'Yuri Gagarin',
