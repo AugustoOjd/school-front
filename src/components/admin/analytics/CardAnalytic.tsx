@@ -23,7 +23,7 @@ export const CardAnalytic= () => {
         const datos = res.data.map((cou:any)=> cou.country)
   
         const {
-          Bolivia,
+          bolivia,
           argentina, 
           chile,
           colombia,
@@ -51,7 +51,7 @@ export const CardAnalytic= () => {
           {
             nombre:       'Bolivia',
             bandera:      'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Bandera_de_Bolivia_%28Estado%29.svg/264px-Bandera_de_Bolivia_%28Estado%29.svg.png',
-            cantidad:     Bolivia || 0
+            cantidad:     bolivia || 0
           },
           {
             nombre:       'Chile',

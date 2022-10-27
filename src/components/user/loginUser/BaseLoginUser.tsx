@@ -8,7 +8,7 @@ const BaseLoginUser = () => {
         <Box
             bgcolor={'primary.light'}
             width={'100%'}
-            height={{ xs: '700px', md: '600px'}}
+            height={{ xs: '800px', md: '800px'}}
             paddingTop={{ xs: '90px', md: '120px'}}
         >
             <FormLoginUser/>
